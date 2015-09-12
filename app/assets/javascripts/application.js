@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+import "bootstrap.min.js";
+import "html5shiv.js";
+import "jquery.js";
