@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
               <!--LOGO-->
-              <div class="span3"><a class="brand" href="#"><img src="img/logo.png"/></a></div>
+              <div class="span3"><a class="brand" href="#"><%= image_tag "logo.png" %></a></div>
               <!-- /LOGO -->
 
             <!-- MAIN NAVIGATION -->  
@@ -66,7 +66,7 @@
 
               </div>
 
-                <div class="span6"> <img src="img/slide/slide1.jpg"></div>
+                <div class="span6"><%= image_tag "slide/slide1.jpg" %></div>
 
           </div>
         </div>
@@ -91,7 +91,7 @@
 
               </div>
 
-                <div class="span6"> <img src="img/slide/slide2.jpg"></div>
+                <div class="span6"><%= image_tag "slide/slide2.jpg" %></div>
 
           </div>
         </div>
@@ -124,7 +124,7 @@
       </div>
 
       <div class="span4">
-        <img src="img/icon3.png">
+        <%= image_tag "icon3.png" %>
         <h2>Feature A</h2>
         <p>
             Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
@@ -135,7 +135,7 @@
       </div>
 
       <div class="span4">
-        <img src="img/icon2.png">
+        <%= image_tag "icon2.png" %>
         <h2>Feature B</h2>
         <p>
             Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
@@ -145,7 +145,7 @@
       </div>
 
       <div class="span4">
-        <img src="img/icon1.png">
+        <%= image_tag "icon1.png" %>
         <h2>Feature C</h2>
         <p>
             Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. 
@@ -163,10 +163,10 @@
 
 
     <div class="row">
-        <div class="span6"><img src="img/responsive.png"></div>
+        <div class="span6"><%= image_tag "responsive.png" %></div>
 
         <div class="span6">
-          <img class="hidden-phone" src="img/icon4.png" alt="">
+          <%= image_tag("icon4.png", :class => "hidden-phone", :alt =>"") %>
           <h1>Fully Responsive</h1>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
              <a href="#">Read More &rarr;</a>
@@ -192,11 +192,11 @@
         </div>
         <div class="span6">
             <div class="social pull-right">
-                <a href="#"><img src="img/social/googleplus.png" alt=""></a>
-                <a href="#"><img src="img/social/dribbble.png" alt=""></a>
-                <a href="#"><img src="img/social/twitter.png" alt=""></a>
-                <a href="#"><img src="img/social/dribbble.png" alt=""></a>
-                <a href="#"><img src="img/social/rss.png" alt=""></a>
+                <a href="#"><%= image_tag "social/googleplus.png" %></a>
+                <a href="#"><%= image_tag "social/dribbble.png" %></a>
+                <a href="#"><%= image_tag "social/twitter.png" %></a>
+                <a href="#"><%= image_tag "social/dribbble.png" %></a>
+                <a href="#"><%= image_tag "social/rss.png" %></a>
             </div>
         </div>
       </div>
