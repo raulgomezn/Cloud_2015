@@ -14,5 +14,5 @@
  *= require_self
  */
 @import "bootstrap-responsive.min";
-@import "bootstrap.min";
+@import "bootstrap";
 @import "style";

@@ -1,3 +1,13 @@
 es:
   hello: "hola mundo"
   copy_right: "Reservados todos los derechos."
+  index_resposive: "SmartTools provee a sus clientes una pagina Responsive para que sus clientes pueden entrar desde cualquier SmartPhone o PC*."
+  index_full_resposive: "Completamente Responsive"
+  feature_a: "Administrable"
+  feature_a_description: "Configura tu concurso, y ve que vdeos estan estan convertidos y que participantes los subieron."
+  feature_b: "Ideas"
+  feature_b_description: "Crea tu propio concurso con una url única."
+  feature_c: "Videos"
+  feature_c_description: "Has que tus participantes suban vídeos para demostrar quien es el mejor! y ganar premios."
+  feature_title: "Lo mejor para sus concursos de video"
+  feature_title_description: "Tenga su propio Concurso administrelo como quiera."
