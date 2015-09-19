@@ -13,6 +13,6 @@
  *= require_tree .
  *= require_self
  */
+@import "style";
 @import "bootstrap-responsive.min";
 @import "bootstrap";
-@import "style";

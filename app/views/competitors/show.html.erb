@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Competition:</strong>
+  <%= @competitor.competition %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @competitor.first_name %>
+</p>
+
+<p>
+  <strong>Second name:</strong>
+  <%= @competitor.second_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @competitor.last_name %>
+</p>
+
+<p>
+  <strong>Second last name:</strong>
+  <%= @competitor.second_last_name %>
+</p>
+
+<p>
+  <strong>Date admission:</strong>
+  <%= @competitor.date_admission %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @competitor.email %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @competitor.message %>
+</p>
+
+<p>
+  <strong>Status video:</strong>
+  <%= @competitor.status_video %>
+</p>
+
+<p>
+  <strong>Url video original:</strong>
+  <%= @competitor.url_video_original %>
+</p>
+
+<p>
+  <strong>Url video converted:</strong>
+  <%= @competitor.url_video_converted %>
+</p>
+
+<%= link_to 'Edit', edit_competitor_path(@competitor) %> |
+<%= link_to 'Back', competitors_path %>
