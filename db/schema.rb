@@ -11,14 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919003544) do
+ActiveRecord::Schema.define(version: 20150919195610) do
+
+  create_table "competitions", force: :cascade do |t|
+    t.integer  "users_id"
+    t.string   "name"
+    t.string   "url"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "prize"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "competitions", ["users_id"], name: "index_competitions_on_users_id"
+
+  create_table "competitors", force: :cascade do |t|
+    t.integer  "competition_id"
+    t.string   "first_name"
+    t.string   "second_name"
+    t.string   "last_name"
+    t.string   "second_last_name"
+    t.datetime "date_admission"
+    t.string   "email"
+    t.text     "message"
+    t.string   "status_video"
+    t.string   "url_video_original"
+    t.string   "url_video_converted"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "competitors", ["competition_id"], name: "index_competitors_on_competition_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "firts_name"
+    t.string   "second_name"
     t.string   "last_name"
+    t.string   "second_last_name"
     t.string   "email"
     t.string   "password"
-    t.string   "remember_session"
+    t.boolean  "IsAdmin"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

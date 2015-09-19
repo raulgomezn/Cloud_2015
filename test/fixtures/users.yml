@@ -1,15 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  firts_name: MyString
+  second_name: MyString
   last_name: MyString
+  second_last_name: MyString
   email: MyString
   password: MyString
-  remember_session: MyString
+  IsAdmin: false
 
 two:
-  name: MyString
+  firts_name: MyString
+  second_name: MyString
   last_name: MyString
+  second_last_name: MyString
   email: MyString
   password: MyString
-  remember_session: MyString
+  IsAdmin: false
