@@ -20067,3 +20067,234 @@ Processing by CompetitionsController#new as HTML
   Rendered competitions/_form.html.erb (65.0ms)
   Rendered competitions/new.html.erb within layouts/application (73.4ms)
 Completed 200 OK in 276ms (Views: 248.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/competitors" for 157.253.221.112 at 2015-09-19 20:31:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by CompetitorsController#index as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  [1m[36mCompetitor Load (0.2ms)[0m  [1mSELECT "competitors".* FROM "competitors"[0m
+  Rendered competitors/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 149ms (Views: 145.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 20:31:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 20:31:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 20:31:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/competitors/new" for 157.253.221.112 at 2015-09-19 20:31:14 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by CompetitorsController#new as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  Rendered competitors/_form.html.erb (14.6ms)
+  Rendered competitors/new.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 218ms (Views: 201.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 157.253.221.112 at 2015-09-19 20:31:43 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by HomeController#index as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  Rendered home/index.html.erb within layouts/application (27.3ms)
+Completed 200 OK in 167ms (Views: 165.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 20:31:44 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 20:31:44 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 20:31:44 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/signup" for 157.253.221.112 at 2015-09-19 20:32:01 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  Rendered users/_form.html.erb (10.4ms)
+  Rendered users/new.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 192ms (Views: 179.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 157.253.221.112 at 2015-09-19 21:24:18 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  Rendered home/index.html.erb within layouts/application (169.9ms)
+Completed 200 OK in 399ms (Views: 366.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 21:24:19 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 21:24:19 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 21:24:19 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/competitions" for 157.253.221.112 at 2015-09-19 21:24:39 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by CompetitionsController#index as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  [1m[35mCompetition Load (0.4ms)[0m  SELECT "competitions".* FROM "competitions"
+  Rendered competitions/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 242ms (Views: 226.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 21:24:40 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 21:24:40 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 21:24:40 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/competitions/new" for 157.253.221.112 at 2015-09-19 21:24:42 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by CompetitionsController#new as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  Rendered competitions/_form.html.erb (42.2ms)
+  Rendered competitions/new.html.erb within layouts/application (48.7ms)
+Completed 200 OK in 232ms (Views: 210.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 157.253.221.112 at 2015-09-19 21:24:51 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#index as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 207ms (Views: 189.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 21:24:52 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 21:24:52 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 21:24:52 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/users/new" for 157.253.221.112 at 2015-09-19 21:24:54 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  Rendered users/_form.html.erb (11.7ms)
+  Rendered users/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 210ms (Views: 194.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 157.253.221.112 at 2015-09-19 21:26:39 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#index as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  Rendered users/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 212ms (Views: 205.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 21:26:40 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 21:26:40 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 21:26:40 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/users/new" for 157.253.221.112 at 2015-09-19 21:26:41 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#new as HTML
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  Rendered users/_form.html.erb (4.8ms)
+  Rendered users/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 144ms (Views: 133.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 157.253.221.112 at 2015-09-19 21:28:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8kdUtRqrKQjTpkcDzXprV4BW+Nent+tVQaRjCSwDr+yl4fLb1l7P3ODEQ7PvkTiz4BYyDw0uHek7Xy25/HJwLw==", "user"=>{"firts_name"=>"Raul", "second_name"=>"Alfredo", "last_name"=>"", "second_last_name"=>"Niño", "email"=>"ra.gomez11@uniandes.edu.co", "password"=>"[FILTERED]", "IsAdmin"=>"1"}, "commit"=>"Crear User"}
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered users/_form.html.erb (7.9ms)
+  Rendered users/new.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 167ms (Views: 139.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 21:28:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 21:28:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 21:28:11 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started POST "/users" for 157.253.221.112 at 2015-09-19 21:28:50 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TNfQiceWIdpz91I38d4LvyWp5EQkl3Uj9sdF/88pQu4bcXbnC2PHDkCVVofTNVhbRekunI4Og5+MPAtPH1idLQ==", "user"=>{"firts_name"=>"Raul", "second_name"=>"Alfredo", "last_name"=>"", "second_last_name"=>"Niño", "email"=>"ra.gomez11@uniandes.edu.co", "password"=>"[FILTERED]", "IsAdmin"=>"1"}, "commit"=>"Crear User"}
+* Accept-Language: es,en;q=0.8
+* Locale set to 'es'
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  Rendered users/_form.html.erb (10.2ms)
+  Rendered users/new.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 241ms (Views: 233.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/style" for 157.253.221.112 at 2015-09-19 21:28:50 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap" for 157.253.221.112 at 2015-09-19 21:28:50 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
+
+
+Started GET "/assets/bootstrap-responsive.min" for 157.253.221.112 at 2015-09-19 21:28:50 +0000
+Cannot render console from 157.253.221.112! Allowed networks: 157.253.163.53, 127.0.0.0/127.255.255.255, ::1
