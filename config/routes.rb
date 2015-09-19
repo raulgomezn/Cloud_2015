@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :sessions, only: [:new, :create, :destroy]
+  get '/signin',  to: 'sessions#new'
+  get '/signout', to: 'sessions#destroy'
+  
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

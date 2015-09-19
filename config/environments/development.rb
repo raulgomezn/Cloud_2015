@@ -40,4 +40,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   
   config.web_console.whitelisted_ips = '161.18.10.20'
+  config.web_console.whitelisted_ips = '157.253.163.53'
 end
