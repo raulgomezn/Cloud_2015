@@ -16,3 +16,6 @@ es:
   title_feature: "Lo mejor para sus concursos de video"
   description_feature: "Tenga su propio Concurso, administrelo como usted quiera."
   create_account: "Crear Cuenta"
+  login: "Logearse"
+  login_2: "Ingresar"
+  remember: "Recordarme"

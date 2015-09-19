@@ -14,7 +14,7 @@
                 <div class="carousel-caption">
                       <h1><%= t('slider_title') %></h1>
                       <p class="lead"><%= t('slider_description') %></p>
-                      <a class="btn btn-large btn-primary" href="#"><%= t('create_account') %></a>
+                      <%= link_to t('create_account') , signup_path, class: "btn btn-large btn-primary" %>
                 </div>
               </div>
               <div class="span6"><%= image_tag "slide/slide1.jpg" %></div>
@@ -29,7 +29,7 @@
                 <div class="carousel-caption">
                       <h1><%= t('slider_title') %></h1>
                       <p class="lead"><%= t('slider_description') %></p>
-                      <a class="btn btn-large btn-primary" href="#"><%= t('create_account') %></a>
+                      <%= link_to t('create_account') , signup_path, class: "btn btn-large btn-primary" %>
                 </div>
               </div>
               <div class="span6"><%= image_tag "slide/slide2.jpg" %></div>
