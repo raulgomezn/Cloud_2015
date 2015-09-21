@@ -19,6 +19,9 @@ es:
   login: "Logearse"
   login_2: "Ingresar"
   remember: "Recordarme"
+  welcome_for_email: "Bienvenido a SmartTools"
+  update_info: "Actualización de información"
+  
   date:
     abbr_day_names:
     - dom

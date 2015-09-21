@@ -40,6 +40,9 @@ en:
   login: "LogIn"
   login_2: "Log in"
   remember: "Remember me"
+  welcome_for_email: "Welcome to SmartTools"
+  update_info: "Update Information"
+  
   date:
     abbr_day_names:
     - Sun

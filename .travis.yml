@@ -1,28 +1,9 @@
 language: ruby
 rvm:
-  - 1.26.9
+  - 2.1.0
+  - jruby-18mode
   - jruby-19mode
+  - rbx-2
+  - ruby-head
   - jruby-head
-
-jdk:
-  - openjdk6
-  - openjdk7
-
-services:
-  - rabbitmq
-
-sudo: false
-
-cache: bundler
-
-matrix:
-  exclude:
-    - rvm: 1.26.9
-      jdk: openjdk7
-    - rvm: 1.26.9
-      jdk: oraclejdk7
-    - rvm: jruby-head
-      jdk: openjdk6
-  allow_failures:
-    - rvm: jruby-head
-      jdk: openjdk7
+  - ree
