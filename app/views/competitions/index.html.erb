@@ -19,13 +19,13 @@
   <tbody>
     <% @competitions.each do |competition| %>
       <tr>
-        <td><%= competition.users %></td>
+        <td><%= competition.users_id %></td>
         <td><%= competition.name %></td>
         <td><%= competition.url %></td>
         <td><%= competition.start_date %></td>
         <td><%= competition.end_date %></td>
         <td><%= competition.prize %></td>
-        <td><%= competition.image %></td>
+        <td><%= competition.banner.url %></td>
         <td><%= link_to 'Show', competition %></td>
         <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
         <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -44,17 +44,21 @@
     <%= f.text_area :message %>
   </div>
   <div class="field">
-    <%= f.label :status_video %><br>
-    <%= f.text_field :status_video %>
+    <%= f.label :video_original %><br>
+    <%= f.file_field :video_original %>
   </div>
-  <div class="field">
-    <%= f.label :url_video_original %><br>
-    <%= f.text_field :url_video_original %>
-  </div>
-  <div class="field">
-    <%= f.label :url_video_converted %><br>
-    <%= f.text_field :url_video_converted %>
-  </div>
+  <!--<div class="field">-->
+  <!--   f.label :status_video %><br>-->
+  <!--   f.text_field :status_video %>-->
+  <!--</div>-->
+  <!--<div class="field">-->
+  <!--   f.label :url_video_original %><br>-->
+  <!--   f.text_field :url_video_original %>-->
+  <!--</div>-->
+  <!--<div class="field">-->
+  <!--   f.label :url_video_converted %><br>-->
+  <!--   f.text_field :url_video_converted %>-->
+  <!--</div>-->
   <div class="actions">
     <%= f.submit %>
   </div>

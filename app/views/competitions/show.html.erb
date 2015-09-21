@@ -2,7 +2,7 @@
 
 <p>
   <strong>Users:</strong>
-  <%= @competition.users %>
+  <%= @competition.users_id %>
 </p>
 
 <p>
@@ -31,8 +31,8 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @competition.image %>
+  <strong>Banner:</strong>
+  <%= image_tag @competition.banner.url(:medium) %>
 </p>
 
 <%= link_to 'Edit', edit_competition_path(@competition) %> |

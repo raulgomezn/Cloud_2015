@@ -46,14 +46,19 @@
 </p>
 
 <p>
-  <strong>Url video original:</strong>
-  <%= @competitor.url_video_original %>
+  <strong>Video:</strong>
+  <%= video_tag @competitor.video.url(), controls: true, type: "video/mp4" %>
 </p>
 
-<p>
-  <strong>Url video converted:</strong>
-  <%= @competitor.url_video_converted %>
-</p>
+<!--<p>-->
+<!--  <strong>Url video original:</strong>-->
+<!--   @competitor.url_video_original %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Url video converted:</strong>-->
+<!--  < @competitor.url_video_converted %>-->
+<!--</p>-->
 
 <%= link_to 'Edit', edit_competitor_path(@competitor) %> |
 <%= link_to 'Back', competitors_path %>

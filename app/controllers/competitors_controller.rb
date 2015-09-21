@@ -62,13 +62,13 @@ class CompetitorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_competitor
-      @competitor = Competitor.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_competitor
+    @competitor = Competitor.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def competitor_params
-      params.require(:competitor).permit(:competition_id, :first_name, :second_name, :last_name, :second_last_name, :date_admission, :email, :message, :status_video, :url_video_original, :url_video_converted)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def competitor_params
+    params.require(:competitor).permit(:competition_id, :first_name, :second_name, :last_name, :second_last_name, :date_admission, :email, :message, :status_video, :url_video_original, :url_video_converted)
+  end
 end

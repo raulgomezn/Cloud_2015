@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   resources :competitors
   resources :competitions
   resources :users
-  resources :users
-  resources :competitions
-  resources :users
+
   get 'users/new'
   get 'signup'  => 'users#new'
 
