@@ -23,7 +23,7 @@
   <tbody>
     <% @competitors.each do |competitor| %>
       <tr>
-        <td><%= competitor.competition %></td>
+        <td><%= competitor.id %></td>
         <td><%= competitor.first_name %></td>
         <td><%= competitor.second_name %></td>
         <td><%= competitor.last_name %></td>
@@ -32,8 +32,8 @@
         <td><%= competitor.email %></td>
         <td><%= competitor.message %></td>
         <td><%= competitor.status_video %></td>
-        <td><%= competitor.url_video_original %></td>
-        <td><%= competitor.url_video_converted %></td>
+        <td><%= competitor.video_original %></td>
+        <td><%= competitor.video_converted %></td>
         <td><%= link_to 'Show', competitor %></td>
         <td><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
         <td><%= link_to 'Destroy', competitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
