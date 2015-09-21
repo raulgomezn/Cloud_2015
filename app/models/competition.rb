@@ -9,8 +9,8 @@ class Competition < ActiveRecord::Base
   #validates :banner, presence: true
   
   has_attached_file :banner,
-  :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-  :url => "/system/:attachment/:id/:style/:filename",
+  #:path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+  #:url => "/system/:attachment/:id/:style/:filename",
   :styles => { :medium => "1024x120>"}
   
   validates_attachment_content_type :banner, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]

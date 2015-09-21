@@ -6,6 +6,9 @@
 # ignorar el Cloud9
 /.c9
 
+# archivos subidos
+/public/system/
+
 # Ignore bundler config.
 /.bundle
 
