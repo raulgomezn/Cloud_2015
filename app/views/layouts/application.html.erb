@@ -1,93 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title><%= full_title(yield(:title)) %></title>
+  <title>
+    <%= full_title(yield(:title)) %>
+  </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <!--Font-->
-  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
-  <!--[if lt IE 9]>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.css">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <%=stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> true %>
+  <%=javascript_include_tag 'application', 'data-turbolinks-track'=> true %>
+  
+  <%=csrf_meta_tags %>
+  <%=favicon_link_tag 'favicon.ico' %>
+          <!--Font-->
+          <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
+      <!--[if lt IE 9]>
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
       </script>
     <![endif]-->
 </head>
 
 <body>
-<!--HEADER ROW-->
-  <div id="header-row">
-    <div class="container">
-      <div class="row">
-              <!--LOGO-->
-              <div class="span3"><a class="brand" href="#"><%= image_tag "logo2.png" %></a></div>
-              <!-- /LOGO -->
-
-            <!-- MAIN NAVIGATION -->  
-              <div class="span9">
-                <div class="navbar pull-right">
-                  <div class="navbar-inner">
-                    <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-                    <div class="nav-collapse collapse navbar-responsive-collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="">Inicio</a></li>
-                        <li class="active"><a href="#">Iniciar Sesión</a></li>
-                        
-                        </a></li>
-                        <!--
-                        <li class="dropdown">
-                          <a href="about.html" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                  <li><a href="about.html">Company</a></li>
-                                  <li><a href="about.html">History</a></li>
-                                  <li><a href="about.html">Team</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="service.html">Services</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        -->
-                    </ul>
-                  </div>
-
-                  </div>
-                </div>
-              </div>
-            <!-- MAIN NAVIGATION -->  
-      </div>
-    </div>
+  <!--HEADER ROW-->
+  <header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "UniCloud", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path %></li>
+        <% if logged_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Cuenta <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Perfil", current_user %></li>
+              <li><%= link_to "Dashboard", '/administrator/' + @current_user.id.to_s %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: "delete" %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
   </div>
-  
-<!-- /HEADER ROW -->
+</header>
 
-<div class="container">
-<%= yield %>
-</div>
-<!--Footer
-==========================-->
+  <!-- /HEADER ROW -->
 
-<footer>
+  <div class="container">
+    <%=yield %>
+  </div>
+
+  <!--Footer==========================-->
+  <footer>
     <div class="container">
       <div class="row">
-        <div class="span6">Copyright &copy 2015 UniCloud <br>
-        <small><%= t('copy_right') %></small>
+        <div class="span6">Copyright &copy 2015 UniCloud
+          <br>
+          <small><%= t('copy_right') %></small>
         </div>
         <div class="span6">
-            <div class="social pull-right">
-                <a href="https://plus.google.com/"><%= image_tag "social/googleplus.png" %></a>
-                <a href="https://twitter.com/"><%= image_tag "social/twitter.png" %></a>
-                <a href="#"><%= image_tag "social/rss.png" %></a>
-            </div>
+          <div class="social pull-right">
+            <a href="https://plus.google.com/">
+              <%=image_tag "social/googleplus.png" %>
+            </a>
+            <a href="https://twitter.com/">
+              <%=image_tag "social/twitter.png" %>
+            </a>
+            <a href="#">
+              <%=image_tag "social/rss.png" %>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-</footer>
-
-
-
-<!--/.Footer-->
+  </footer>
+  <!--/.Footer-->
 
 </body>
+
 </html>

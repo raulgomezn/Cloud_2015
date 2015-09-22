@@ -26,6 +26,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip', '~> 4.3'
 gem 'figaro'
 gem 'pg'
+gem 'bcrypt'
+# gem 'bootstrap-sass',       '3.2.0.0'
+gem 'will_paginate', '~> 3.0.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -47,3 +50,8 @@ group :development, :test do
   gem 'spring'
 end
 
+# group :production do
+#   gem 'pg'
+#   gem 'rails_12factor', '0.0.2'
+#   gem 'puma',           '2.11.1'
+# end

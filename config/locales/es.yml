@@ -18,9 +18,11 @@ es:
   create_account: "Crear Cuenta"
   login: "Logearse"
   login_2: "Ingresar"
+  login_3: "Iniciar Sesión"
   remember: "Recordarme"
   welcome_for_email: "Bienvenido a SmartTools"
   update_info: "Actualización de información"
+  home: "Inicio"
   
   date:
     abbr_day_names:

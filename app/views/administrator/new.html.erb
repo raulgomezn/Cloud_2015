@@ -1,0 +1,8 @@
+<h1>Administrator</h1>
+<p>Funciones del administrador:</p>
+
+<p>ID del administrador: <%= @my_id_param %></p>
+<%= link_to "Crear Concurso" , '/competitions/new', class: "btn btn-large btn-primary" %>
+<%= link_to "Ver concursos" , '/competitions', class: "btn btn-large btn-primary" %>
+
+<%= will_paginate @competitions %>

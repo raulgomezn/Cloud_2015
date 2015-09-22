@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920233701) do
+ActiveRecord::Schema.define(version: 20150922011814) do
 
   create_table "competitions", force: :cascade do |t|
     t.integer  "users_id"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20150920233701) do
     t.boolean  "IsAdmin"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "password_digest"
   end
 
 end

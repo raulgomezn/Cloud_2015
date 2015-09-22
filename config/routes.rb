@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'administrator/new'
+  get 'administrator/:id' => 'administrator#new'
+
+  get 'sessions/new'
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   resources :competitors
   resources :competitions
   resources :users
