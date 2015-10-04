@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   resources :competitors
   resources :competitions
+  
+  resources :competitions do
+    resources :competitors
+  end
+  
   resources :users
 
   get 'users/new'

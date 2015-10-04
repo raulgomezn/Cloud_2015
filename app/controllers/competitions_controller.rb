@@ -4,12 +4,16 @@ class CompetitionsController < ApplicationController
   # GET /competitions
   # GET /competitions.json
   def index
-    @competitions = Competition.all
+    user = current_user
+    user.competitions
+    @competitions = user.competitions
   end
 
   # GET /competitions/1
   # GET /competitions/1.json
   def show
+    #@competitors = Competitor.all
+    @competitors = Competitor.paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /competitions/new

@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Users:</strong>
+  <strong>Código del concurso:</strong>
   <%= @competition.users_id %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @competition.name %>
 </p>
 
@@ -16,17 +16,17 @@
 </p>
 
 <p>
-  <strong>Start date:</strong>
+  <strong>Fecha de inicio:</strong>
   <%= @competition.start_date %>
 </p>
 
 <p>
-  <strong>End date:</strong>
+  <strong>Fecha fin:</strong>
   <%= @competition.end_date %>
 </p>
 
 <p>
-  <strong>Prize:</strong>
+  <strong>Premio:</strong>
   <%= @competition.prize %>
 </p>
 
@@ -35,5 +35,46 @@
   <%= image_tag @competition.banner.url(:medium) %>
 </p>
 
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+<%= link_to 'Editar', edit_competition_path(@competition) %>
+<!--<%= link_to 'Atras', competitions_path %>-->
+
+<h1>Lista de Competidores</h1>
+
+<table frame="border" border="4" >
+  <thead>
+    <tr>
+      <th>ID del competidor</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Date admission</th>
+      <th>Email</th>
+      <th>Mensaje</th>
+      <th>Estado video</th>
+      <th>Url video original</th>
+      <th>Url video converted</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @competitors.each do |competitor| %>
+      <tr>
+        <td><%= competitor.id %></td>
+        <td><%= competitor.first_name %> <%= competitor.second_name %></td>
+        <td><%= competitor.last_name %> <%= competitor.second_last_name %></td>
+        <td><%= competitor.date_admission %></td>
+        <td><%= competitor.email %></td>
+        <td><%= competitor.message %></td>
+        <td><%= competitor.status_video %></td>
+        <td><%= competitor.video_original %></td>
+        <td><%= competitor.video_converted %></td>
+        <td><%= link_to 'Ver', competitor %>|
+        <%= link_to 'Editar', edit_competitor_path(competitor) %>|
+        <%= link_to 'Eliminar', competitor, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @competitors %>
+<br>
+<!--<%= link_to 'New Competitor', new_competitor_path %>-->

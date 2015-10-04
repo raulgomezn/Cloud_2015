@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :users_id %><br>
-    <%= f.text_field :users_id %>
+    <%= f.label 'Codigo del concurso' %><br>
+    <%= f.text_field :users_id, :disabled => true %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
@@ -39,6 +39,7 @@
     <%= f.label :banner %><br>
     <%= f.file_field :banner %>
   </div>
+  <br>
   <div class="actions">
     <%= f.submit %>
   </div>

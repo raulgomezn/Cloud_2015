@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :competition_id %><br>
-    <%= f.text_field :competition_id %>
+    <%= f.text_field :competition_id, :disabled => true %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br>
@@ -46,6 +46,10 @@
   <div class="field">
     <%= f.label :video_original %><br>
     <%= f.file_field :video_original %>
+  </div>
+  <div class="field">
+     <%=f.label :status_video %><br>
+     <%=f.text_field :status_video %>
   </div>
   <!--<div class="field">-->
   <!--   f.label :status_video %><br>-->

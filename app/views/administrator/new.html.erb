@@ -1,8 +1,39 @@
-<h1>Administrator</h1>
-<p>Funciones del administrador:</p>
+<h1>Home Concursos</h1>
 
-<p>ID del administrador: <%= @my_id_param %></p>
+<p>Su Codigo Identificador es: <%= @my_id_param %></p>
 <%= link_to "Crear Concurso" , '/competitions/new', class: "btn btn-large btn-primary" %>
-<%= link_to "Ver concursos" , '/competitions', class: "btn btn-large btn-primary" %>
+
+
+<h1>Listing Competitions</h1>
+
+<table frame="border" border="4" >
+  <thead>
+    <tr>
+      <th>ID Admin</th>
+      <th>Nombre</th>
+      <th>Url</th>
+      <th>Fecha de Inicio</th>
+      <th>Fecha Fin</th>
+      <th>Premio</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @competitions.each do |competition| %>
+      <tr>
+        <td><%= competition.users_id %></td>
+        <td><%= competition.name %></td>
+        <td><%= competition.url %></td>
+        <td><%= competition.start_date %></td>
+        <td><%= competition.end_date %></td>
+        <td><%= competition.prize %></td>
+        <td><%= link_to 'Ver', competition %>|
+        <%= link_to 'Editar', edit_competition_path(competition) %>|
+        <%= link_to 'Eliminar', competition, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= will_paginate @competitions %>
