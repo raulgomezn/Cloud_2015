@@ -1,15 +1,19 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Home Concursos</h1>
 
-<p>Su Codigo Identificador es: <%= @my_id_param %></p>
+<p>Su Código Identificador es: <%= @my_id_param %></p>
+
 <%= link_to "Crear Concurso" , '/competitions/new', class: "btn btn-large btn-primary" %>
 
+<h1>Lista de Concursos</h1>
 
-<h1>Listing Competitions</h1>
-
+<% if @competitions.any? %>
 <table frame="border" border="4" >
   <thead>
     <tr>
       <th>ID Admin</th>
+      <th>ID Concurso</th>
       <th>Nombre</th>
       <th>Url</th>
       <th>Fecha de Inicio</th>
@@ -23,6 +27,7 @@
     <% @competitions.each do |competition| %>
       <tr>
         <td><%= competition.users_id %></td>
+        <td><%= competition.id %></td>
         <td><%= competition.name %></td>
         <td><%= competition.url %></td>
         <td><%= competition.start_date %></td>
@@ -37,3 +42,6 @@
 </table>
 
 <%= will_paginate @competitions %>
+<% else %>
+<p>No tiene concursos creados.</p>
+<% end %>

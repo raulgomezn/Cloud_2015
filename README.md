@@ -18,3 +18,7 @@ Versionamiento del proyecto 1 de la asignatura de Cloud Computing correspodiente
 **Maestría en Ingeniería de Software.**
 
 
+##Instalación:
+
+Para que funcione PaperClip 
+sudo apt-get install imagemagick -y

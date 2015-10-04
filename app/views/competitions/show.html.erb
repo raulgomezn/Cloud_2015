@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Código del concurso:</strong>
+  <strong>Código del Administrador:</strong>
   <%= @competition.users_id %>
+</p>
+
+<p>
+  <strong>Código del Concurso:</strong>
+  <%= @competition.id %>
 </p>
 
 <p>
@@ -40,6 +45,7 @@
 
 <h1>Lista de Competidores</h1>
 
+<% if @competitors.any? %>
 <table frame="border" border="4" >
   <thead>
     <tr>
@@ -70,11 +76,17 @@
         <td><%= competitor.video_converted %></td>
         <td><%= link_to 'Ver', competitor %>|
         <%= link_to 'Editar', edit_competitor_path(competitor) %>|
-        <%= link_to 'Eliminar', competitor, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+        <%= link_to 'Eliminar', competitor, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <%= will_paginate @competitors %>
+<% else %>
+<p>
+  <strong>Sin Datos:</strong>
+  Todavía no hay competidores en su concurso.
+</p>
+<% end %>
 <br>
-<!--<%= link_to 'New Competitor', new_competitor_path %>-->
+<%= link_to 'Nuevo Competidor', new_competitor_path %>

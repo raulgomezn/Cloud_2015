@@ -12,13 +12,16 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.json
   def show
-    #@competitors = Competitor.all
-    @competitors = Competitor.paginate(:page => params[:page], :per_page => 30)
+    puts "---->ID #{params[:id]}."
+    @competitors = Competitor.where(:competition_id => params[:id]).paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /competitions/new
   def new
+    user = current_user
     @competition = Competition.new
+    @competition.users_id = user.id
+    puts "--->Usuario logeado #{@competition.users_id}"
   end
 
   # GET /competitions/1/edit
@@ -28,8 +31,11 @@ class CompetitionsController < ApplicationController
   # POST /competitions
   # POST /competitions.json
   def create
+    user = current_user
+    puts "--->Create"
     @competition = Competition.new(competition_params)
-
+    @competition.users_id = user.id
+    puts "--->Usuario logeado #{@competition.users_id}"
     respond_to do |format|
       if @competition.save
         format.html { redirect_to @competition, notice: 'Competition was successfully created.' }

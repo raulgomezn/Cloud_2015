@@ -12,11 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Codigo del concurso' %><br>
+    <%= f.label 'Código del Administrador' %><br>
+    <% if @competition.users_id? %>
+    # <%= @competition.users_id %>
+    <% else %>
     <%= f.text_field :users_id, :disabled => true %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label 'Nombre' %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
@@ -24,15 +28,15 @@
     <%= f.text_field :url %>
   </div>
   <div class="field">
-    <%= f.label :start_date %><br>
+    <%= f.label 'Fecha de Inicio' %><br>
     <%= f.datetime_select :start_date %>
   </div>
   <div class="field">
-    <%= f.label :end_date %><br>
+    <%= f.label 'Fecha Fin' %><br>
     <%= f.datetime_select :end_date %>
   </div>
   <div class="field">
-    <%= f.label :prize %><br>
+    <%= f.label 'Premio' %><br>
     <%= f.text_area :prize %>
   </div>
   <div class="field">

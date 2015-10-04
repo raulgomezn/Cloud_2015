@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :admin_user,     only: :destroy
   # GET /users
   # GET /users.json
   def index
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, notice: 'Usuario creado satisfactoriamente. Por favor Haga clic en el boton Ingresar para loguearse.' }
         format.json { render :show, status: :created, location: @user }
         # Tell the UserMailer to send a welcome email after save
         UserMailer.welcome_email(@user).deliver
@@ -74,5 +74,11 @@ class UsersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:firts_name, :second_name, :last_name, :second_last_name, :email, :password, :IsAdmin)
+  end
+  
+  private
+  #desologuea
+  def admin_user
+    log_out
   end
 end

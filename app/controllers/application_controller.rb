@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = extract_locale_from_accept_language_header
     logger.debug "* Locale set to '#{I18n.locale}'"
   end
-  
+
   private
   def extract_locale_from_accept_language_header
     if request.env['HTTP_ACCEPT_LANGUAGE'].nil?

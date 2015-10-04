@@ -16,4 +16,5 @@ class Competitor < ActiveRecord::Base
   
   #validates :url_video_original, length: { maximum: 255}, presence: true
   #validates :url_video_converted, length: { maximum: 255}
+  #scope :competition, -> { where(:competition => "id") }
 end
