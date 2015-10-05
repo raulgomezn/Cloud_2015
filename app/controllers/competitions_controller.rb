@@ -1,11 +1,10 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: [:show, :edit, :update, :destroy]
-  before_action :permisos, only: [:show, :edit, :update, :destroy]
+  before_action :permisos, only: [:show, :edit, :update, :destroy, :index]
   
   # GET /competitions
   # GET /competitions.json
   def index
-    helper_method :permisos
     user = current_user
     user.competitions
     @competitions = user.competitions

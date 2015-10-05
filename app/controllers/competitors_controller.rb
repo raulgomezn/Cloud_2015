@@ -1,6 +1,6 @@
 class CompetitorsController < ApplicationController
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]
-  before_action :permisos, only: [:show, :edit, :update, :destroy]
+  before_action :permisos, only: [:show, :edit, :update, :destroy, :index]
 
   # GET /competitors
   # GET /competitors.json
