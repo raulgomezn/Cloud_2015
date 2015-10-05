@@ -45,15 +45,24 @@
   <%= @competitor.status_video %>
 </p>
 
+<strong>Video Original:</strong>
+
+<%= video_tag @competitor.video_original.url(), controls: true , type: "video/x-msvideo" %>
+
+<%= jw_player(@competitor.video_original.url(),:width => 100, :height => 110) %>
+
+
+
 <% if @competitor.status_video == 'En Proceso' %>
   <strong>El video esta siendo procesado!.</strong>
-  <b>
+
 <% else %>
   <strong>Video:</strong>
   <%= video_tag @competitor.video_converted.url(), controls: true, type: "video/mp4" %>
 </p>
 <% end %>
 
+<br>
 
 
 <!--<p>-->
@@ -66,5 +75,4 @@
 <!--  < @competitor.url_video_converted %>-->
 <!--</p>-->
 
-<!--<%= link_to 'Edit', edit_competitor_path(@competitor) %> |-->
-<!--<%= link_to 'Back', competitors_path %>-->
+<%= link_to 'Back', competition_url(@competition) %>

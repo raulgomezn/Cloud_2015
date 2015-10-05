@@ -15,7 +15,7 @@ class CompetitionsController < ApplicationController
   def show
     puts "---->ID #{params[:id]}."
     @competitions = Competition.find(params[:id])
-    @competitors = @competitions.competitors.all.paginate(:page => params[:page], :per_page => 30)
+    @competitors = @competitions.competitors.all.order(:date_admission => :desc).paginate(:page => params[:page], :per_page => 50)
   end
 
   # GET /competitions/new
@@ -66,11 +66,11 @@ class CompetitionsController < ApplicationController
   # DELETE /competitions/1
   # DELETE /competitions/1.json
   def destroy
-    @competition.destroy
     respond_to do |format|
-      format.html { redirect_to competitions_url, notice: 'Competition was successfully destroyed.' }
+      format.html { redirect_to '/administrator/' + current_user.id.to_s, notice: 'Competition was successfully destroyed.' }
       format.json { head :no_content }
     end
+    @competition.destroy
   end
 
   private

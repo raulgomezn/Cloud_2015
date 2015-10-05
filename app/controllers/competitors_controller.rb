@@ -5,17 +5,20 @@ class CompetitorsController < ApplicationController
   # GET /competitors
   # GET /competitors.json
   def index
-    @competitors = Competitor.all
+    @competition = Competition.find(params[:competition_id])
+    @competitors = @competition.competitors.all
   end
 
   # GET /competitors/1
   # GET /competitors/1.json
   def show
+    @competition = Competition.find(params[:competition_id])
   end
 
   # GET /competitors/new
   def new
-    @competitor = Competitor.new
+    @competition = Competition.find(params[:competition_id])
+    @competitor = @competition.competitors.new
   end
 
   # GET /competitors/1/edit
@@ -25,11 +28,13 @@ class CompetitorsController < ApplicationController
   # POST /competitors
   # POST /competitors.json
   def create
-    @competitor = Competitor.new(competitor_params)
-
+    @competition = Competition.find(params[:competition_id])
+    @competitor = @competition.competitors.new(competitor_params)
+    @competitor.status_video = 'En Proceso'
+    @competitor.date_admission = Time.now.getutc
     respond_to do |format|
       if @competitor.save
-        format.html { redirect_to @competitor, notice: 'Competitor was successfully created.' }
+        format.html { redirect_to competition_url(@competition), notice: 'Competitor was successfully created.' }
         format.json { render :show, status: :created, location: @competitor }
       else
         format.html { render :new }

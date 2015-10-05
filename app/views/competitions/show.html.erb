@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @competition.banner.url(:medium) %>
+</p>
+
+<p>
+  <strong>Bienvenido al concurso <%= @competition.name %>!!</strong>
+
+</p>
+
+
+<p>
   <strong>Código del Administrador:</strong>
   <%= @competition.users_id %>
 </p>
@@ -10,10 +20,6 @@
   <%= @competition.id %>
 </p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @competition.name %>
-</p>
 
 <p>
   <strong>Url:</strong>
@@ -35,10 +41,7 @@
   <%= @competition.prize %>
 </p>
 
-<p>
-  <strong>Banner:</strong>
-  <%= image_tag @competition.banner.url(:medium) %>
-</p>
+
 
 <%= link_to 'Editar', edit_competition_path(@competition) %>
 <!--<%= link_to 'Atras', competitions_path %>-->
@@ -56,8 +59,6 @@
       <th>Email</th>
       <th>Mensaje</th>
       <th>Estado video</th>
-      <th>Url video original</th>
-      <th>Url video converted</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -72,11 +73,9 @@
         <td><%= competitor.email %></td>
         <td><%= competitor.message %></td>
         <td><%= competitor.status_video %></td>
-        <td><%= competitor.video_original %></td>
-        <td><%= competitor.video_converted %></td>
-        <td><%= link_to 'Ver', competitor %>|
-        <%= link_to 'Editar', edit_competitor_path(competitor) %>|
-        <%= link_to 'Eliminar', competitor, method: :delete, data: { confirm: '¿Esta seguro?' } %></td>
+        <td><%= link_to 'Ver', competition_competitor_url(@competition,competitor.id) %>
+
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -89,4 +88,4 @@
 </p>
 <% end %>
 <br>
-<%= link_to 'Nuevo Competidor', new_competitor_path %>
+    <%= link_to 'Nuevo Competidor', new_competition_competitor_url(@competition) %>
