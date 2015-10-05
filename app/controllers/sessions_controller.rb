@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
     else
       # Create an error message.
       flash[:danger] = 'Invalid email/password combination'
+      #format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
       render 'new'
     end
   end

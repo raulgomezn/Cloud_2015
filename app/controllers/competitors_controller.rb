@@ -1,5 +1,6 @@
 class CompetitorsController < ApplicationController
   before_action :set_competitor, only: [:show, :edit, :update, :destroy]
+  before_action :permisos, only: [:show, :edit, :update, :destroy]
 
   # GET /competitors
   # GET /competitors.json
@@ -70,5 +71,10 @@ class CompetitorsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def competitor_params
     params.require(:competitor).permit(:competition_id, :first_name, :second_name, :last_name, :second_last_name, :date_admission, :email, :message, :status_video, :video_original, :video_converted)
+  end
+  def permisos
+    if(!logged_in?)
+      redirect_to login_path
+    end
   end
 end

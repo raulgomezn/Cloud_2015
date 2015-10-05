@@ -1,9 +1,11 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: [:show, :edit, :update, :destroy]
-
+  before_action :permisos, only: [:show, :edit, :update, :destroy]
+  
   # GET /competitions
   # GET /competitions.json
   def index
+    helper_method :permisos
     user = current_user
     user.competitions
     @competitions = user.competitions
@@ -80,5 +82,11 @@ class CompetitionsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def competition_params
     params.require(:competition).permit(:users_id, :name, :url, :start_date, :end_date, :prize, :banner)
+  end
+  
+  def permisos
+    if(!logged_in?)
+      redirect_to login_path
+    end
   end
 end

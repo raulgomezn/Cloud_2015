@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :admin_user,     only: :destroy
+  #before_action :admin_user,     only: :destroy
+  #before_action :permisos, only: [:show, :edit, :update, :destroy] 
+  
   # GET /users
   # GET /users.json
   def index
@@ -80,5 +82,11 @@ class UsersController < ApplicationController
   #desologuea
   def admin_user
     log_out
+  end
+  
+  def permisos
+    if(!logged_in?)
+      redirect_to login_path
+    end
   end
 end
