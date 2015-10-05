@@ -1,6 +1,5 @@
 class Competition < ActiveRecord::Base
   belongs_to :users
-
   has_many :competitors, dependent: :destroy
   validates :name, length: { maximum: 100}, presence: true
   validates :url, length: { maximum: 100}, presence: true

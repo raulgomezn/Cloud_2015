@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Competitions</h1>
+<h1>Lista de Concursos</h1>
 
+<% if @competitions.nil? %>
 <table>
   <thead>
     <tr>
@@ -33,7 +34,9 @@
     <% end %>
   </tbody>
 </table>
-
+<% else %>
+<p>No hay concursos disponibles.</p>
+<% end %>
 <br>
 
 <%= link_to 'New Competition', new_competition_path %>
