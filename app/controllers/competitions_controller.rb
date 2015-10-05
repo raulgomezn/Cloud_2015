@@ -13,7 +13,9 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1.json
   def show
     puts "---->ID #{params[:id]}."
-    @competitors = Competitor.where(:competition_id => params[:id]).paginate(:page => params[:page], :per_page => 30)
+    @competitions = Competition.find(params[:id])
+    @competitors = @competitions.competitors.all
+    #@competitors = Competitor.where(:competition_id => params[:id]).paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /competitions/new
