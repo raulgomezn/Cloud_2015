@@ -8,6 +8,7 @@
 
 # ignorar el Cloud9
 /.c9
+/.idea/
 
 # archivos subidos
 /public/system/
