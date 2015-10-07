@@ -1,5 +1,6 @@
 class Competitor < ActiveRecord::Base
-  belongs_to :competitions
+  
+  belongs_to :competition
   validates :first_name, length: { maximum: 50}, presence: true
   validates :second_name, length: { maximum: 50}
   validates :last_name, length: { maximum: 50}, presence: true
@@ -14,7 +15,4 @@ class Competitor < ActiveRecord::Base
   validates_attachment_content_type :video_original, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
   validates_attachment_content_type :video_converted, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
   
-  #validates :url_video_original, length: { maximum: 255}, presence: true
-  #validates :url_video_converted, length: { maximum: 255}
-  #scope :competition, -> { where(:competition => "id") }
 end

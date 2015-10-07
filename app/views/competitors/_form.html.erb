@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :competition_id %><br>
-    <%= f.text_field :competition_id,  :disabled => true %>
+    <%= f.label 'Concurso Número' %><br>
+    <%= f.text_field :id_concurso, :value =>@competition.id,  :disabled => true %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br>

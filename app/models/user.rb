@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-    has_many :competitions
+    has_many :competitions, dependent: :destroy
     validates :firts_name, length: { maximum: 50}, presence: true
     validates :second_name, length: { maximum: 50}
     validates :last_name, length: { maximum: 50}, presence: true

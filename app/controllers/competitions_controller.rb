@@ -15,7 +15,9 @@ class CompetitionsController < ApplicationController
   def show
     puts "---->ID #{params[:id]}."
     @competitions = Competition.find(params[:id])
-    @competitors = @competitions.competitors.all.order(:date_admission => :desc).paginate(:page => params[:page], :per_page => 50)
+    puts "---->Name #{@competitions.name}."
+    @competitors = Competitor.where(:competitions_id => params[:id]).order(:date_admission => :desc).paginate(:page => params[:page], :per_page => 50)
+    puts "---->competitors #{@competitors.count}"
   end
 
   # GET /competitions/new
