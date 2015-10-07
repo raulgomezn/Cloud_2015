@@ -8,7 +8,7 @@
 /config/s3_credentials.yml
 # ignorar el Cloud9
 /.c9
-/.idea/
+/.idea
 
 # archivos subidos
 /public/system/
