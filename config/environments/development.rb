@@ -63,8 +63,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
   :storage => :s3,
   :s3_credentials => {
-        :bucket => ENV['bucket'],
-        :s3_credentials => '#{Rails.root}/config/s3_credentials.yml'
+        :default_url => 'http://s3-sa-east-1.amazonaws.com/unicloudstorage/',
+        :s3_host_name => 's3-sa-east-1.amazonaws.com/',
+        :bucket => 'unicloudstorage',
+        :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
     }
   }
 end

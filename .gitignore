@@ -5,10 +5,10 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 # ignorar application.yml
 /config/application.yml
-/config/s3_credentials.yml
+config/aws.yml
 # ignorar el Cloud9
 /.c9
-/.idea
+.idea
 
 # archivos subidos
 /public/system/

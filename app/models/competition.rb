@@ -9,10 +9,11 @@ class Competition < ActiveRecord::Base
   #validates :banner, presence: true
   has_attached_file :banner,
         :styles => { :medium => "1024x120>"},
-        # :default_url => 'https://s3-sa-east-1.amazonaws.com',
+        :default_url => 'http://s3-sa-east-1.amazonaws.com/unicloudstorage/',
         :storage => :s3,
-        :bucket => 'unicloudstorage'
-        #:s3_credentials => '#{Rails.root}/config/aws.yml',
+        :s3_host_name => 's3-sa-east-1.amazonaws.com/',
+        :bucket => 'unicloudstorage',
+        :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
         #     :url => "/:image/:id/:style/:basename.:extension",
         #     :path => ":image/:id/:style/:basename.:extension"
   
