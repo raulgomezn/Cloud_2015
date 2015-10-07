@@ -22,8 +22,8 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'aws-sdk-rails', '~> 1.0'
-
+#gem 'aws-sdk-rails', '~> 1.0'
+gem 'aws-sdk', '< 2.0'
 # Otras
 gem 'paperclip', '~> 4.3'
 gem 'figaro'

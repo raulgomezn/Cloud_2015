@@ -58,4 +58,13 @@ Rails.application.configure do
   password:             ENV['gmail_password'],
   authentication:       'plain',
   enable_starttls_auto: true  }
+  
+  # Paperclip (for Amazon) 
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+        :bucket => ENV['bucket'],
+        :s3_credentials => '#{Rails.root}/config/s3_credentials.yml'
+    }
+  }
 end
