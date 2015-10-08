@@ -1,59 +1,84 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Competition:</strong>
-  <%= @competitor.competition %>
+  <strong>Código de la competición:</strong>
+  <%= @competitor.id %>
 </p>
 
 <p>
-  <strong>First name:</strong>
-  <%= @competitor.first_name %>
+  <strong>Nombre Participante:</strong>
+  <%= @competitor.first_name %> <%= @competitor.second_name %> <%= @competitor.last_name %> <%= @competitor.second_last_name %>
 </p>
 
 <p>
-  <strong>Second name:</strong>
-  <%= @competitor.second_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @competitor.last_name %>
-</p>
-
-<p>
-  <strong>Second last name:</strong>
-  <%= @competitor.second_last_name %>
-</p>
-
-<p>
-  <strong>Date admission:</strong>
+  <strong>Fecha Ingreso:</strong>
   <%= @competitor.date_admission %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong>Correo Electronico:</strong>
   <%= @competitor.email %>
 </p>
 
 <p>
-  <strong>Message:</strong>
+  <strong>Mensaje:</strong>
   <%= @competitor.message %>
 </p>
 
 <p>
-  <strong>Status video:</strong>
+  <strong>Estado del Video:</strong>
   <%= @competitor.status_video %>
 </p>
 
-<p>
-  <strong>Url video original:</strong>
-  <%= @competitor.url_video_original %>
+<strong>Video Original:</strong>
+</p>
+<div id="myElement">Loading the player...</div>
+<script type="text/javascript">
+    var playerInstance = jwplayer("myElement");
+    playerInstance.setup({
+        file: "<%= @competitor.video_original.url() %>",
+        width: 640,
+        height: 360,
+        title: 'Basic Video Embed',
+        description: 'A video with a basic title and description!'
+    });
+</script>
+
 </p>
 
-<p>
-  <strong>Url video converted:</strong>
-  <%= @competitor.url_video_converted %>
+<% if @competitor.status_video == 'En Proceso' %>
+  <strong>El video esta siendo procesado!.</strong>
+
+<% else %>
+  <strong>Video:</strong></p>
+    <div id="myElement1">Loading the player...</div>
+    <script type="text/javascript">
+        var playerInstance = jwplayer("myElement1");
+        playerInstance.setup({
+            file: "<%= @competitor.video_converted.url() %>",
+            width: 640,
+            height: 360,
+            title: 'Basic Video Embed',
+            description: 'A video with a basic title and description!'
+        });
+    </script>
+</p>
+<% end %>
 </p>
 
-<%= link_to 'Edit', edit_competitor_path(@competitor) %> |
-<%= link_to 'Back', competitors_path %>
+
+
+<br>
+
+
+<!--<p>-->
+<!--  <strong>Url video original:</strong>-->
+<!--   @competitor.url_video_original %>-->
+<!--</p>-->
+
+<!--<p>-->
+<!--  <strong>Url video converted:</strong>-->
+<!--  < @competitor.url_video_converted %>-->
+<!--</p>-->
+
+<%= link_to 'Back', competition_url(@competition) %>

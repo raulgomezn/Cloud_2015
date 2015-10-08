@@ -39,7 +39,12 @@ en:
   create_account: "Create Account"
   login: "LogIn"
   login_2: "Log in"
+  login_3: "Log In"
   remember: "Remember me"
+  welcome_for_email: "Welcome to SmartTools"
+  update_info: "Update Information"
+  home: "Home"
+  
   date:
     abbr_day_names:
     - Sun

@@ -1,4 +1,4 @@
-<%= form_for(@competitor) do |f| %>
+<%= form_for [@competition, @competitor] do |f| %>
   <% if @competitor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@competitor.errors.count, "error") %> prohibited this competitor from being saved:</h2>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :competition_id %><br>
-    <%= f.text_field :competition_id %>
+    <%= f.label 'Concurso Número' %><br>
+    <%= f.text_field :id_concurso, :value =>@competition.id,  :disabled => true %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br>
@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :date_admission %><br>
-    <%= f.datetime_select :date_admission %>
+    <%= f.datetime_select :date_admission, :disabled => true%>
   </div>
   <div class="field">
     <%= f.label :email %><br>
@@ -44,17 +44,25 @@
     <%= f.text_area :message %>
   </div>
   <div class="field">
-    <%= f.label :status_video %><br>
-    <%= f.text_field :status_video %>
+    <%= f.label :video_original %><br>
+    <%= f.file_field :video_original %>
   </div>
   <div class="field">
-    <%= f.label :url_video_original %><br>
-    <%= f.text_field :url_video_original %>
+     <%=f.label :status_video %><br>
+     <%=f.text_field :status_video, :disabled => true%>
   </div>
-  <div class="field">
-    <%= f.label :url_video_converted %><br>
-    <%= f.text_field :url_video_converted %>
-  </div>
+  <!--<div class="field">-->
+  <!--   f.label :status_video %><br>-->
+  <!--   f.text_field :status_video %>-->
+  <!--</div>-->
+  <!--<div class="field">-->
+  <!--   f.label :url_video_original %><br>-->
+  <!--   f.text_field :url_video_original %>-->
+  <!--</div>-->
+  <!--<div class="field">-->
+  <!--   f.label :url_video_converted %><br>-->
+  <!--   f.text_field :url_video_converted %>-->
+  <!--</div>-->
   <div class="actions">
     <%= f.submit %>
   </div>

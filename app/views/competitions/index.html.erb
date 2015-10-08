@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Competitions</h1>
+<h1>Lista de Concursos</h1>
 
+<% if @competitions.nil? %>
 <table>
   <thead>
     <tr>
@@ -19,13 +20,13 @@
   <tbody>
     <% @competitions.each do |competition| %>
       <tr>
-        <td><%= competition.users %></td>
+        <td><%= competition.users_id %></td>
         <td><%= competition.name %></td>
         <td><%= competition.url %></td>
         <td><%= competition.start_date %></td>
         <td><%= competition.end_date %></td>
         <td><%= competition.prize %></td>
-        <td><%= competition.image %></td>
+        <td><%= competition.banner.url %></td>
         <td><%= link_to 'Show', competition %></td>
         <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
         <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,7 +34,9 @@
     <% end %>
   </tbody>
 </table>
-
+<% else %>
+<p>No hay concursos disponibles.</p>
+<% end %>
 <br>
 
 <%= link_to 'New Competition', new_competition_path %>

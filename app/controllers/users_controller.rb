@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  #before_action :admin_user,     only: :destroy
+  #before_action :permisos, only: [:show, :edit, :update, :destroy] 
+  
   # GET /users
   # GET /users.json
   def index
@@ -28,8 +30,10 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, notice: 'Usuario creado satisfactoriamente. Por favor Haga clic en el boton Ingresar para loguearse.' }
         format.json { render :show, status: :created, location: @user }
+        # Tell the UserMailer to send a welcome email after save
+        UserMailer.welcome_email(@user).deliver
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -44,6 +48,8 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
+        # Tell the UserMailer to send 
+        UserMailer.update_email(@user).deliver
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -62,13 +68,25 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:firts_name, :second_name, :last_name, :second_last_name, :email, :password, :IsAdmin)
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:firts_name, :second_name, :last_name, :second_last_name, :email, :password, :isadmin)
+  end
+  
+  private
+  #desologuea
+  def admin_user
+    log_out
+  end
+  
+  def permisos
+    if(!logged_in?)
+      redirect_to login_path
     end
+  end
 end

@@ -1,6 +1,6 @@
 ### Proyecto Cloud - SmartTools
 ## Estado
-[![Build Status](https://travis-ci.org/raulgomezn/Cloud_2015.svg?branch=dev)](https://travis-ci.org/raulgomezn/Cloud_2015)
+[![Build Status](https://travis-ci.org/raulgomezn/Cloud_2015.svg?branch=master)](https://travis-ci.org/raulgomezn/Cloud_2015)
 [![Codacy Badge](https://api.codacy.com/project/badge/1750c709d3fe4f329e80d72b4ef85482)](https://www.codacy.com/app/raul-gomezn/Cloud_2015)
 
 # Integrantes
@@ -18,3 +18,7 @@ Versionamiento del proyecto 1 de la asignatura de Cloud Computing correspodiente
 **Maestría en Ingeniería de Software.**
 
 
+##Instalación:
+
+Para que funcione PaperClip 
+sudo apt-get install imagemagick -y

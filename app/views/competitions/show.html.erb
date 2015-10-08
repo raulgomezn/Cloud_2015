@@ -1,14 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Users:</strong>
-  <%= @competition.users %>
+  <%= image_tag @competition.banner.url(:medium) %>
 </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @competition.name %>
+  <strong>Bienvenido al concurso <%= @competition.name %>!!</strong>
+
 </p>
+
+
+<p>
+  <strong>Código del Administrador:</strong>
+  <%= @competition.users_id %>
+</p>
+
+<p>
+  <strong>Código del Concurso:</strong>
+  <%= @competition.id %>
+</p>
+
 
 <p>
   <strong>Url:</strong>
@@ -16,24 +27,65 @@
 </p>
 
 <p>
-  <strong>Start date:</strong>
+  <strong>Fecha de inicio:</strong>
   <%= @competition.start_date %>
 </p>
 
 <p>
-  <strong>End date:</strong>
+  <strong>Fecha fin:</strong>
   <%= @competition.end_date %>
 </p>
 
 <p>
-  <strong>Prize:</strong>
+  <strong>Premio:</strong>
   <%= @competition.prize %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @competition.image %>
-</p>
 
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+
+<%= link_to 'Editar', edit_competition_path(@competition) %>
+<!--<%= link_to 'Atras', competitions_path %>-->
+
+<h1>Lista de Competidores</h1>
+
+<% if @competitors.any? %>
+<table frame="border" border="4" >
+  <thead>
+    <tr>
+      <th>ID del competidor</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Date admission</th>
+      <th>Email</th>
+      <th>Mensaje</th>
+      <th>Estado video</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @competitors.each do |competitor| %>
+      <tr>
+        <td><%= competitor.id %></td>
+        <td><%= competitor.first_name %> <%= competitor.second_name %></td>
+        <td><%= competitor.last_name %> <%= competitor.second_last_name %></td>
+        <td><%= competitor.date_admission %></td>
+        <td><%= competitor.email %></td>
+        <td><%= competitor.message %></td>
+        <td><%= competitor.status_video %></td>
+        <td><%= link_to 'Ver', competition_competitor_url(@competition,competitor.id) %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @competitors %>
+<% else %>
+<p>
+  <strong>Sin Datos:</strong>
+  Todavía no hay competidores en su concurso.
+</p>
+<% end %>
+<br>
+    <%= link_to 'Nuevo Competidor', new_competition_competitor_url(@competition) %>
