@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<h1>Perfil</h1>
+<p>
+  <strong>Firts name:</strong>
+  <%= @user.firts_name %>
+</p>
+
+<p>
+  <strong>Second name:</strong>
+  <%= @user.second_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Second last name:</strong>
+  <%= @user.second_last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  ******
+</p>
+
+<p>
+  <strong>Administrador:</strong>
+  <%= @user.isadmin %>
+</p>
+
+<%= link_to 'Editar', edit_user_path(@user) %> |
+<%= link_to "Eliminar", @user, method: :delete,
+                                  data: { confirm: "¿Esta seguro?" } %>
+
+
+<!--| <%= link_to 'Back', users_path %>-->

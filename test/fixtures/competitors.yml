@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  competition_id: 
+  first_name: MyString
+  second_name: MyString
+  last_name: MyString
+  second_last_name: MyString
+  date_admission: 2015-09-19 19:56:10
+  email: MyString
+  message: MyText
+  status_video: MyString
+  url_video_original: MyString
+  url_video_converted: MyString
+
+two:
+  competition_id: 
+  first_name: MyString
+  second_name: MyString
+  last_name: MyString
+  second_last_name: MyString
+  date_admission: 2015-09-19 19:56:10
+  email: MyString
+  message: MyText
+  status_video: MyString
+  url_video_original: MyString
+  url_video_converted: MyString

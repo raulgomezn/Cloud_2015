@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firts_name: Raul
+  second_name: Alfredo
+  last_name: Perez
+  second_last_name: Perez
+  email: ra.gomez11@asdasd.com
+  password: 123456
+  IsAdmin: false
+
+two:
+  firts_name: Manuel
+  second_name: Fulanito
+  last_name: Jimenez
+  second_last_name: Pecoso
+  email: perez@hormail.com
+  password: 123456
+  IsAdmin: false

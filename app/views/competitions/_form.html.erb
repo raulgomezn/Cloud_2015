@@ -1,0 +1,50 @@
+<%= form_for @competition, :url => {:action => @competition.url} do |f| %>
+  <% if @competition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+
+      <ul>
+      <% @competition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Código del Administrador' %><br>
+    <% if @competition.users_id? %>
+    # <%= @competition.users_id %>
+    <% else %>
+    <%= f.text_field :users_id, :disabled => true %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label 'Nombre' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label 'Fecha de Inicio' %><br>
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label 'Fecha Fin' %><br>
+    <%= f.datetime_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label 'Premio' %><br>
+    <%= f.text_area :prize %>
+  </div>
+  <div class="field">
+    <%= f.label :banner %><br>
+    <%= f.file_field :banner %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

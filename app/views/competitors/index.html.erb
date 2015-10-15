@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Competitors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Competition</th>
+      <th>First name</th>
+      <th>Second name</th>
+      <th>Last name</th>
+      <th>Second last name</th>
+      <th>Date admission</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Status video</th>
+      <th>Url video original</th>
+      <th>Url video converted</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @competitors.each do |competitor| %>
+      <tr>
+        <td><%= competitor.id %></td>
+        <td><%= competitor.first_name %></td>
+        <td><%= competitor.second_name %></td>
+        <td><%= competitor.last_name %></td>
+        <td><%= competitor.second_last_name %></td>
+        <td><%= competitor.date_admission %></td>
+        <td><%= competitor.email %></td>
+        <td><%= competitor.message %></td>
+        <td><%= competitor.status_video %></td>
+        <td><%= competitor.video_original %></td>
+        <td><%= competitor.video_converted %></td>
+        <td><%= link_to 'Show', competitor %></td>
+        <td><%= link_to 'Edit', edit_competitor_path(competitor) %></td>
+        <td><%= link_to 'Destroy', competitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Competitor', new_competition_competitor_url(@competition) %>
