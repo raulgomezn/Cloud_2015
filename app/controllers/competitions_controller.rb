@@ -1,6 +1,6 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: [:show, :edit, :update, :destroy]
-  before_action :permisos, only: [:show, :edit, :update, :destroy, :index]
+  before_action :permisos, only: [:edit, :update, :destroy, :index]
   
   # GET /competitions
   # GET /competitions.json
@@ -14,10 +14,10 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1.json
   def show
     puts "---->ID #{params[:id]}."
-    @competitions = Competition.find(params[:id])
+    @competitions = Competition.find_by(url: params[:id])
     puts "---->Name #{@competitions.name}."
-    @competitors = Competitor.where(:competitions_id => params[:id]).order(:date_admission => :desc).paginate(:page => params[:page], :per_page => 50)
-    puts "---->competitors #{@competitors.count}"
+    @competitors = Competitor.where("competitions_id = ? AND status_video = ?",@competitions.id,"Convertido").order(:date_admission => :desc).paginate(:page => params[:page], :per_page => 50)
+    #puts "---->competitors #{@competitors.count}"
   end
 
   # GET /competitions/new
@@ -56,7 +56,7 @@ class CompetitionsController < ApplicationController
   def update
     respond_to do |format|
       if @competition.update(competition_params)
-        format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
+        format.html { redirect_to @competition.url, notice: 'Competition was successfully updated.' }
         format.json { render :show, status: :ok, location: @competition }
       else
         format.html { render :edit }
@@ -72,13 +72,16 @@ class CompetitionsController < ApplicationController
       format.html { redirect_to '/administrator/' + current_user.id.to_s, notice: 'Competition was successfully destroyed.' }
       format.json { head :no_content }
     end
-    @competition.destroy
+    @competition = Competition.find_by(url: params[:id]).destroy
+    
+    puts "--->id concurso #{@competition.id}"
+    
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_competition
-    @competition = Competition.find(params[:id])
+    @competition = Competition.find_by(url: params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

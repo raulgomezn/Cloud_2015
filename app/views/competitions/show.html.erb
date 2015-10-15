@@ -43,7 +43,7 @@
 
 
 
-<%= link_to 'Editar', edit_competition_path(@competition) %>
+<%= link_to 'Editar', edit_competition_path(@competition.url) %>
 <!--<%= link_to 'Atras', competitions_path %>-->
 
 <h1>Lista de Competidores</h1>
@@ -88,4 +88,4 @@
 </p>
 <% end %>
 <br>
-    <%= link_to 'Nuevo Competidor', new_competition_competitor_url(@competition) %>
+    <%= link_to 'Nuevo Competidor', new_competition_competitor_url(@competition.url) %>

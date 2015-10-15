@@ -1,6 +1,6 @@
 class Competition < ActiveRecord::Base
   belongs_to :user
-  has_many :competitors, dependent: :destroy
+  has_many :competitors
   validates :name, length: { maximum: 100}, presence: true
   validates :url, length: { maximum: 100}, presence: true
   validates :start_date, presence: true
@@ -14,9 +14,6 @@ class Competition < ActiveRecord::Base
         :s3_host_name => 's3-sa-east-1.amazonaws.com/',
         :bucket => 'unicloudstorage',
         :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
-        #     :url => "/:image/:id/:style/:basename.:extension",
-        #     :path => ":image/:id/:style/:basename.:extension"
-  
 
   validates_attachment_content_type :banner, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 end

@@ -1,6 +1,5 @@
 class Competitor < ActiveRecord::Base
-  
-  belongs_to :competition
+  belongs_to :competition, dependent: :destroy
   validates :first_name, length: { maximum: 50}, presence: true
   validates :second_name, length: { maximum: 50}
   validates :last_name, length: { maximum: 50}, presence: true
