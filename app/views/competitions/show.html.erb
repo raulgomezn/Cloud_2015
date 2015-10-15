@@ -73,7 +73,7 @@
         <td><%= competitor.email %></td>
         <td><%= competitor.message %></td>
         <td><%= competitor.status_video %></td>
-        <td><%= link_to 'Ver', competition_competitor_url(@competition,competitor.id) %>
+        <td><%= link_to 'Ver', competition_competitor_url(@competition.url,competitor.id) %>
 
         </td>
       </tr>
