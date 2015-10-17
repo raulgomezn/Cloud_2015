@@ -9,6 +9,7 @@ config/aws.yml
 # ignorar el Cloud9
 /.c9
 .idea
+/spring/*
 
 # archivos subidos
 /public/system/

@@ -28,7 +28,7 @@ class CompetitorsController < ApplicationController
   # POST /competitors
   # POST /competitors.json
   def create
-    @competition = Competition.find(params[:competition_id])
+    @competition = Competition.find(url: params[:competition_id])
     puts "--->id concurso #{@competition.id}"
     @competitor = Competitor.new(competitor_params)
     @competitor.status_video = 'En Proceso'

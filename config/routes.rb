@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'administrator/new'
-  get 'administrator/:id' => 'administrator#new'
+  #get 'administrator/new'
+  #get 'administrator/:id' => 'administrator#new'
 
   get 'sessions/new'
   get    'login'   => 'sessions#new'
@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   #resources :competitors
   #resources :competitions
 
-  resources :competitions do
-    resources :competitors
-  end
+  resources :competitions
+  resources :competitors
+  #end
   
   resources :users
 

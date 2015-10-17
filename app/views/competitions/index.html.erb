@@ -2,18 +2,17 @@
 
 <h1>Lista de Concursos</h1>
 
-<% if @competitions.nil? %>
-<table>
+<% if @competitions.any? %>
+<table frame="border" border="4">
   <thead>
     <tr>
-      <th>Users</th>
-      <th>Name</th>
+      <th>Usuarios</th>
+      <th>Nombre</th>
       <th>Url</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Prize</th>
-      <th>Image</th>
-      <th colspan="3"></th>
+      <th>Fecha de inicio</th>
+      <th>Fecha final</th>
+      <th>Premio</th>
+      <th>Acciones</th>
     </tr>
   </thead>
 
@@ -26,17 +25,17 @@
         <td><%= competition.start_date %></td>
         <td><%= competition.end_date %></td>
         <td><%= competition.prize %></td>
-        <td><%= competition.banner.url %></td>
-        <td><%= link_to 'Show', competition %></td>
-        <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
-        <td><%= link_to 'Destroy', competition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', competition %>|
+        <%= link_to 'Editar', edit_competition_path(competition) %>|
+        <%= link_to 'Borrar', competition, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @competitors %>
 <% else %>
 <p>No hay concursos disponibles.</p>
 <% end %>
 <br>
 
-<%= link_to 'New Competition', new_competition_path %>
+<%= link_to 'Crear concurso', new_competition_path %>
