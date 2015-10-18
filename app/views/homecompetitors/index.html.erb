@@ -1,0 +1,32 @@
+<p>
+  <%= image_tag @competition.banner.url(:medium) %>
+</p>
+
+<p>
+
+  <strong> Subiendo un video podrás participar en la rifa de <%= @competition.prize %>. Es muy fácil, solo toma un par de minutos. Aprovecha esta oportunidad.</strong>
+
+</p>
+
+
+<% @competitors.each do |competitor| %>
+
+    <p>
+      Participante: <td><%= competitor.first_name %></td> <td><%= competitor.last_name %></td>
+
+    <div id="<%= competitor.id %>">Loading the player...</div>
+    <script type="text/javascript">
+        var playerInstance = jwplayer("<%= competitor.id %>");
+        playerInstance.setup({
+            file: "<%= competitor.video_converted.url() %>",
+            width: 640,
+            height: 360,
+            title: 'Basic Video Embed',
+            description: 'A video with a basic title and description!'
+        });
+    </script>
+    </p>
+<% end %>
+
+<%= link_to 'Ingresa tu video y participa!', new_competitor_path(:competition_id => @competition.id),class: "btn btn-default" %>
+

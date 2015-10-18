@@ -1,24 +1,21 @@
 Rails.application.routes.draw do
-  #get 'administrator/new'
-  #get 'administrator/:id' => 'administrator#new'
+  get 'homecompetitors/index'
 
   get 'sessions/new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  #resources :competitors
-  #resources :competitions
 
   resources :competitions
   resources :competitors
-  #end
-  
   resources :users
 
   get 'users/new'
   get 'signup'  => 'users#new'
 
   root 'home#index'
+
+  get ':url'  =>  'homecompetitors#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

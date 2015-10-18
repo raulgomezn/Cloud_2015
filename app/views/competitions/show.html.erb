@@ -41,11 +41,6 @@
   <%= @competition.prize %>
 </p>
 
-
-
-<%= link_to 'Editar', edit_competition_url %> |
-<%= link_to 'Atras', competitions_url %>
-
 <h1>Lista de Competidores</h1>
 
 <% if @competitors.any? %>
@@ -73,7 +68,7 @@
         <td><%= competitor.email %></td>
         <td><%= competitor.message %></td>
         <td><%= competitor.status_video %></td>
-        <td><%= link_to 'Ver', competition_competitor_url(@competition.url,competitor.id) %>
+        <td><%= link_to 'Ver', competitor_url(competitor.id) %>
 
         </td>
       </tr>
@@ -88,4 +83,6 @@
 </p>
 <% end %>
 <br>
-    <!--<%= link_to 'Nuevo Competidor', new_competitor_url %>-->
+<%= link_to 'Editar', edit_competition_url %> |
+<%= link_to 'Atras', competitions_url %>
+
