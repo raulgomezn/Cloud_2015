@@ -17,7 +17,7 @@ class CompetitionsController < ApplicationController
     @competition = Competition.find(params[:id])
     puts "---->Name #{@competition.name}."
     puts "--->URL:#{request.protocol}#{request.host_with_port}"
-    @competitors = Competitor.where("competitions_id = ? AND status_video = ?",@competition.id,"Convertido").order(:date_admission => :desc).paginate(:page => params[:page], :per_page => 50)
+    @competitors = Competitor.where("competitions_id = ?",@competition.id).order(:date_admission => :desc).paginate(:page => params[:page], :per_page => 50)
     @competition.url = "#{request.protocol}#{request.host_with_port}/#{@competition.url}"
     puts "---->competitors #{@competition.url}"
   end
