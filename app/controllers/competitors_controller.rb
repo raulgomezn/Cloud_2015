@@ -35,7 +35,8 @@ class CompetitorsController < ApplicationController
     @competitor.date_admission = Time.now.getutc
     respond_to do |format|
       if @competitor.save
-        format.html { redirect_to competition_url(@competitor.competitions_id), notice: 'Competidor fue creado con éxito!' }
+        @competition = Competition.find(@competitor.competitions_id)
+        format.html { redirect_to "/" + @competition.url, notice: 'Hemos Recibido Tu Video. Te Enviaremos un Correo Electronico Cuando el Video Este Disponible!' }
         format.json { render :show, status: :created, location: @competitor }
       else
         format.html { render :new }
