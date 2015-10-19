@@ -1,4 +1,5 @@
-<%= form_for ([@competition, @competitor]) do |f| %>
+<%= form_for @competitor do |f| %>
+
   <% if @competitor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@competitor.errors.count, "error") %> prohibited this competitor from being saved:</h2>
@@ -11,58 +12,36 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :competitions_id, value: @competition.id %>
+
   <div class="field">
-    <%= f.label 'Concurso Número' %><br>
-    <%= f.text_field :id_concurso, :value =>@competition.id,  :disabled => true %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br>
+    <%= f.label :"Primer Nombre:" %><br>
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :second_name %><br>
+    <%= f.label :"Segundo Nombre:" %><br>
     <%= f.text_field :second_name %>
   </div>
   <div class="field">
-    <%= f.label :last_name %><br>
+    <%= f.label :"Primer Apellido:" %><br>
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :second_last_name %><br>
+    <%= f.label :"Segundo Nombre:" %><br>
     <%= f.text_field :second_last_name %>
   </div>
   <div class="field">
-    <%= f.label :date_admission %><br>
-    <%= f.datetime_select :date_admission, :disabled => true%>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :"Correo Electronico" %><br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :message %><br>
+    <%= f.label :"Mensaje" %><br>
     <%= f.text_area :message %>
   </div>
   <div class="field">
-    <%= f.label :video_original %><br>
+    <%= f.label :"Video" %><br>
     <%= f.file_field :video_original %>
   </div>
-  <div class="field">
-     <%=f.label :status_video %><br>
-     <%=f.text_field :status_video, :disabled => true%>
-  </div>
-  <!--<div class="field">-->
-  <!--   f.label :status_video %><br>-->
-  <!--   f.text_field :status_video %>-->
-  <!--</div>-->
-  <!--<div class="field">-->
-  <!--   f.label :url_video_original %><br>-->
-  <!--   f.text_field :url_video_original %>-->
-  <!--</div>-->
-  <!--<div class="field">-->
-  <!--   f.label :url_video_converted %><br>-->
-  <!--   f.text_field :url_video_converted %>-->
-  <!--</div>-->
   <div class="actions">
     <%= f.submit "Guardar" %>
   </div>

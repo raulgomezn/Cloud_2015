@@ -43,7 +43,7 @@
                       </a>
                       <ul class="dropdown-menu">
                         <li><%= link_to "Perfil de " + @current_user.firts_name.to_s, current_user %></li>
-                        <li><%= link_to "Dashboard", '/administrator/' + @current_user.id.to_s %></li>
+                        <li><%= link_to "Dashboard", competitions_url %></li>
                         <li class="divider"></li>
                         <li>
                           <%= link_to "Salir", logout_path, method: "delete" %>

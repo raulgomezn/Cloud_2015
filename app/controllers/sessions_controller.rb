@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
       log_in user
       @user = user
-      redirect_to '/administrator/' + user.id.to_s
+      redirect_to competitions_url
       #redirect_to user
     else
       # Create an error message.

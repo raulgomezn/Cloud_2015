@@ -12,12 +12,12 @@ class CompetitorsController < ApplicationController
   # GET /competitors/1
   # GET /competitors/1.json
   def show
-    @competition = Competition.find_by(url: params[:competition_id])
+    @competitor = Competitor.find(params[:id])
   end
 
   # GET /competitors/new
   def new
-    @competition = Competition.find_by(url: params[:competition_id])
+    @competition = Competition.find(params[:competition_id])
     @competitor = Competitor.new
   end
 
@@ -28,15 +28,15 @@ class CompetitorsController < ApplicationController
   # POST /competitors
   # POST /competitors.json
   def create
-    @competition = Competition.find(params[:competition_id])
-    puts "--->id concurso #{@competition.id}"
+    #@competition = Competition.find(params[:competition_id])
     @competitor = Competitor.new(competitor_params)
     @competitor.status_video = 'En Proceso'
-    @competitor.competitions_id = @competition.id
+    #@competitor.competitions_id = params[:competition_id]
     @competitor.date_admission = Time.now.getutc
     respond_to do |format|
       if @competitor.save
-        format.html { redirect_to competition_url(@competition.url), notice: 'Competidor fue creado con éxito!' }
+        @competition = Competition.find(@competitor.competitions_id)
+        format.html { redirect_to "/" + @competition.url, notice: 'Hemos Recibido Tu Video. Te Enviaremos un Correo Electronico Cuando el Video Este Disponible!' }
         format.json { render :show, status: :created, location: @competitor }
       else
         format.html { render :new }
@@ -62,11 +62,13 @@ class CompetitorsController < ApplicationController
   # DELETE /competitors/1
   # DELETE /competitors/1.json
   def destroy
-    @competitor.destroy
+    id_competitor = @competitor.competitions_id
+
     respond_to do |format|
-      format.html { redirect_to competitors_url, notice: 'Competitor was successfully destroyed.' }
+      format.html { redirect_to competitions_url + '/' + id_competitor.to_s, notice: 'Competitor was successfully destroyed.' }
       format.json { head :no_content }
     end
+    @competitor.destroy
   end
 
   private
@@ -77,7 +79,7 @@ class CompetitorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def competitor_params
-    params.require(:competitor).permit(:competition_id, :first_name, :second_name, :last_name, :second_last_name, :date_admission, :email, :message, :status_video, :video_original, :video_converted)
+    params.require(:competitor).permit(:competitions_id, :first_name, :second_name, :last_name, :second_last_name, :date_admission, :email, :message, :status_video, :video_original, :video_converted)
   end
   def permisos
     if(!logged_in?)
