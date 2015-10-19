@@ -62,11 +62,13 @@ class CompetitorsController < ApplicationController
   # DELETE /competitors/1
   # DELETE /competitors/1.json
   def destroy
-    @competitor.destroy
+    id_competitor = @competitor.competitions_id
+
     respond_to do |format|
-      format.html { redirect_to competitors_url, notice: 'Competitor was successfully destroyed.' }
+      format.html { redirect_to competitions_url + '/' + id_competitor.to_s, notice: 'Competitor was successfully destroyed.' }
       format.json { head :no_content }
     end
+    @competitor.destroy
   end
 
   private

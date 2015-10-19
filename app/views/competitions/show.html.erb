@@ -69,6 +69,7 @@
         <td><%= competitor.message %></td>
         <td><%= competitor.status_video %></td>
         <td><%= link_to 'Ver', competitor_url(competitor.id) %>
+        <%= link_to 'Borrar', competitor, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
 
         </td>
       </tr>
