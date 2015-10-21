@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   get 'homecompetitors/index'
 
-  get 'sessions/new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
+  get     'sessions/new'
+  get     'login'   => 'sessions#new'
+  post    'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
   resources :competitions
   resources :competitors
 
-    resources :users
+  resources :users
 
   get 'users/new'
   get 'signup'  => 'users#new'
