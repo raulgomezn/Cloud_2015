@@ -4,11 +4,14 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 # ignorar application.yml
+_amazonses.c9.io.TXT
 /config/application.yml
 config/aws.yml
+config/amazon_ses.yml
 # ignorar el Cloud9
 /.c9
 .idea
+/spring/*
 
 # archivos subidos
 /public/system/

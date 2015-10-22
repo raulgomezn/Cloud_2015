@@ -42,6 +42,11 @@ GEM
     aws-sdk-v1 (1.66.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
+    aws-ses (0.6.0)
+      builder
+      mail (> 2.2.5)
+      mime-types
+      xml-simple
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -163,12 +168,14 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.0.7)
+    xml-simple (1.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   aws-sdk (< 2.0)
+  aws-ses (~> 0.6.0)
   bcrypt
   byebug
   coffee-rails (~> 4.1.0)
