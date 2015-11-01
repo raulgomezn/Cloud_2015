@@ -27,12 +27,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #gem 'aws-sdk-rails', '~> 1.0'
 gem 'aws-sdk', '< 2.0'
 # Otras
-gem 'paperclip', '~> 4.3'
+gem 'dynamoid'
+gem 'dynamoid-paperclip'
+#gem 'paperclip', '~> 4.3'
 gem 'figaro'
 gem 'pg'
 gem 'bcrypt'
 # gem 'bootstrap-sass',       '3.2.0.0'
 gem 'will_paginate', '~> 3.0.5'
+
+
+#gem 'mongoid'
+gem 'bson_ext'
+#gem 'mongo'
+#gem 'mongo_mapper'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

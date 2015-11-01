@@ -1,5 +1,6 @@
 <p>
-  <%= image_tag @competition.banner.url(:medium) %>
+  <!--<%= image_tag @competition.banner.url(:medium) %>-->
+  <%= image_tag url_final(@competition.banner.path) %>
 </p>
 
 <p id="notice"><%= notice %></p>

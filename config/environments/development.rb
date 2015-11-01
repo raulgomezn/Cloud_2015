@@ -20,7 +20,7 @@ Rails.application.configure do
   config.active_support.deprecation = :log
 
   # Raise an error on page load if there are pending migrations.
-  config.active_record.migration_error = :page_load
+  #config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -39,9 +39,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
-  config.web_console.whitelisted_ips = '161.18.10.20'
+  config.web_console.whitelisted_ips = '190.69.208.10'
   config.web_console.whitelisted_ips = '157.253.163.53'
-  config.web_console.whitelisted_ips = '190.252.61.136'
   
   # Paperclip
   Paperclip.options[:command_path] = "/usr/bin/"
@@ -81,4 +80,11 @@ Rails.application.configure do
         :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
     }
   }
+  AWS.config(
+   access_key_id: ENV['access_key_id'], 
+   secret_access_key: ENV['secret_access_key'], 
+   region: 's3-sa-east-1'
+  )
+  #config.action_controller.asset_host = 'd2mmcudnvsg2gc.cloudfront.net'
+  #https://d2mmcudnvsg2gc.cloudfront.net/competitions/banners/2/banner.jpg?1445261885
 end

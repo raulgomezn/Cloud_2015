@@ -7,7 +7,7 @@ class CompetitionsController < ApplicationController
   def index
     user = current_user
     puts "---->ID usario #{user.id}."
-    @competitions = Competition.where("users_id = ?", user.id).paginate(:page => params[:page], :per_page => 50)
+    @competitions = Competition.where(:users_id => user.id)#.paginate(:page => params[:page], :per_page => 50)
   end
 
   # GET /competitions/1
@@ -57,7 +57,7 @@ class CompetitionsController < ApplicationController
   # PATCH/PUT /competitions/1.json
   def update
     respond_to do |format|
-      if @competition.update(competition_params)
+      if @competition.update_attributes(competition_params)
         format.html { redirect_to competitions_url, notice: 'El concurso fue actualizado.' }
         format.json { render :show, status: :ok, location: @competition }
       else

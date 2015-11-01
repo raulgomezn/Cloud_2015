@@ -49,7 +49,7 @@ class CompetitorsController < ApplicationController
   # PATCH/PUT /competitors/1.json
   def update
     respond_to do |format|
-      if @competitor.update(competitor_params)
+      if @competitor.update_attributes(competitor_params)
         format.html { redirect_to @competitor, notice: 'Competitor was successfully updated.' }
         format.json { render :show, status: :ok, location: @competitor }
       else

@@ -119,4 +119,10 @@ Rails.application.configure do
         :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
     }
   }
+  AWS.config(
+   access_key_id: ENV['access_key_id'], 
+   secret_access_key: ENV['secret_access_key'], 
+   region: 's3-sa-east-1'
+  )
+  #config.action_controller.asset_host = 'd2mmcudnvsg2gc.cloudfront.net'
 end
