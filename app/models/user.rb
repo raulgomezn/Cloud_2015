@@ -1,8 +1,8 @@
 class User 
     include Dynamoid::Document #< ActiveRecord::Base
-    table :name => :users, :key => :id, :hash_key => { :id => :string }, :read_capacity => 400, :write_capacity => 400
+    table :name => :users, :key => :id, :read_capacity => 5, :write_capacity => 5 #:hash_key => { :id => :string },
     
-    #field :id, :string
+    field :id, :string
     field :firts_name, :string
     field :second_name, :string
     field :last_name, :string
@@ -11,7 +11,7 @@ class User
     field :password, :string
     field :hash, :serialized
     
-    index :email
+    #index :email
     
     has_many :competitions, dependent: :destroy
     
@@ -59,26 +59,4 @@ class User
     # validates_confirmation_of :password, :if => PasswordRequired, :allow_nil => true
     # validates_length_of :password, :minimum => 6, :if => PasswordRequired, :allow_nil => true
     
-    # def authenticated?(secret)
-    #     password == secret ? true : false
-    # end
-    
-    # def password
-    #     if password.present?
-    #       @password ||= BCrypt::Password.new(password)
-    #     else
-    #       nil
-    #     end
-    # end
-    # def password=(value)
-    #     if value.present?
-    #       @password = value
-    #       self.password = BCrypt::Password.create(value)
-    #     end
-    # end
-  
-    # def email=(new_email)
-    #     new_email.downcase! unless new_email.nil?
-    #     write_attribute(:email, new_email)
-    # end
 end

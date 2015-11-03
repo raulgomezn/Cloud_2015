@@ -15,9 +15,9 @@ class Competitor
         :bucket => 'unicloudstorage',
         :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
   
-  table :name => :competitors, :key => :id, :hash_key => { :id => :string }, :read_capacity => 400, :write_capacity => 400
+  table :name => :competitors, :key => :id, :read_capacity => 5, :write_capacity => 5
 
-  #field :id, :string
+  field :id, :string
   field :first_name,  :string
   field :second_name,  :string
   field :last_name,  :string
@@ -26,12 +26,12 @@ class Competitor
   field :email,  :string
   field :message,  :string
   field :status_video,  :string
-  
+  field :competitions_id,  :string
   field :hash, :serialized
   
-  index :email
+  #index :email
     
-  belongs_to :competition#, dependent: :destroy
+  belongs_to :competition, dependent: :destroy
   
   validates :first_name, length: { maximum: 50}, presence: true
   validates :second_name, length: { maximum: 50}

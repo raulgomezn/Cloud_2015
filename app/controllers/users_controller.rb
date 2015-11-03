@@ -28,14 +28,7 @@ class UsersController < ApplicationController
   def create
     puts '<---Create User'
     @user = User.new(params[:user])
-    #user = User.new
-    #user.firts_name= 'Raul'
-    #user.second_name= 'Alfredo'
-    #user.last_name= 'Gomez'
-    #user.second_last_name= 'Niño'
     puts "<---Create User email #{@user.email}."
-    #user.email= 'ra.gomez11@uniandes.edu.co'
-    #user.password= '123456'
     puts '<---Create User pass'
     
     respond_to do |format|

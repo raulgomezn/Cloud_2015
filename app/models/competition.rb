@@ -10,7 +10,7 @@ class Competition
   :bucket => 'unicloudstorage',
   :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
 
-  table :name => :competitions, :key => :id, :hash_key => { :id => :string }, :read_capacity => 400, :write_capacity => 400
+  table :name => :competitions, :key => :id, :hash_key => { :id => :string }, :read_capacity => 5, :write_capacity => 5
   
   #field :id, :string
   field :name,  :string
@@ -23,9 +23,9 @@ class Competition
   #field :banner_file_size,  :integer
   #field :banner_updated_at,  :datetime
   field :hash, :serialized
-  
-  
-  index :url
+  field :users_id , :string
+
+  #index :url
   
   belongs_to :user
   has_many :competitors

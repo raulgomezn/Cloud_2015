@@ -4,23 +4,26 @@ class SessionsController < ApplicationController
   def create
     mail = params[:session][:email]
     pass = params[:session][:password]
-    puts '-----> LLego el email '+mail
-    puts '-----> LLego el pass '+pass
-    user = User.where(:email => mail.downcase).limit(1)
-    puts '-----> LLego el pass de la DB '+user[0].password
-    if user[0].password == pass.to_s && user[0].email.to_s == mail.to_s #&& user.authenticate(params[:session][:password])
+    puts '-----> LLego el email1 '+mail
+    puts '-----> LLego el pass1 '+pass
+    user = User.where(:email => mail.to_s).first
+    puts '-----> LLego el pass de la DB '+ user.id
+    mail2 = user.email
+    pass2 = user.password
+    if pass2 == pass.to_s && mail2 == mail.to_s #&& user.authenticate(params[:session][:password])
       # Log the user in and redirect to the user's show page.
       puts '-----> If'
-      log_in user[0]
-      @user = user[0]
+      log_in user
+      @user = user
       redirect_to competitions_url
       #redirect_to user
     else
       puts '-----> Else'
       # Create an error message.
-      flash[:danger] = 'Invalid email/password combination'
-      #format.html { redirect_to @competition, notice: 'Competition was successfully updated.' }
-      render 'new'
+      respond_to do |format|
+        format.html { redirect_to login_url, notice: 'Error en el usuario/contraseña.' }
+        format.json { head :no_content }
+      end
     end
   end
 

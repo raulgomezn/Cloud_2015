@@ -11,9 +11,8 @@
 
 </p>
 
-
+<% if !@competitors.nil? %>
 <% @competitors.each do |competitor| %>
-
     <p>
       Participante: <td><%= competitor.first_name %></td> <td><%= competitor.last_name %></td>
 
@@ -30,6 +29,9 @@
     </script>
     </p>
 <% end %>
-
+<% else %>
+<p>No hay participantes disponibles.</p>
+<% end %>
+<br>
 <%= link_to 'Ingresa tu video y participa!', new_competitor_path(:competition_id => @competition.id),class: "btn btn-default" %>
 

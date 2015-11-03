@@ -3,8 +3,8 @@ class BackgroundController < ApplicationController
   #Congiracion AWS
   require 'aws-sdk'
   require 'rufus-scheduler'
-  AWS.config(:access_key_id => 'AKIAISZJW7GNMMEIWDGA',
-             :secret_access_key => '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')
+  AWS.config(:access_key_id => ENV['access_key_id'],
+             :secret_access_key => ENV['secret_access_key'])
 
   def self.escribirCola(mensaje)
     logger.info "Inicio Escribir Cola Para Mensaje: " + mensaje
