@@ -112,10 +112,7 @@ class BackgroundController < ApplicationController
   def self.enviarEmail
     #UserMailer.videoconvertido_email('ing.aduran@gmail.co
     # m').deliver
-    ses = AWS::SimpleEmailService.new(:access_key_id => 'AKIAIPPANZZ7CH6L6BQA',
-                                      :secret_access_key => 'AnegceK5/c3Ob5DQ9PXKOPMUxYBrMGuGIOiv7wdun4NK',
-                                      region: 'us-east-1',
-                                      :ses => { :region => 'us-east-1' })
+    ses = AWS::SimpleEmailService.new(region: 'us-east-1')
     #identity = ses.identities.verify('ing.aduran@gmail.com')
     ses.send_email(
         :subject => 'A Sample Email',
