@@ -4,7 +4,8 @@ class BackgroundController < ApplicationController
   require 'aws-sdk'
   require 'rufus-scheduler'
   AWS.config(:access_key_id => ENV['access_key_id'],
-             :secret_access_key => ENV['secret_access_key'])
+             :secret_access_key => ENV['secret_access_key'],
+             :ses => { :region => 'us-east-1' })
 
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
@@ -37,7 +38,7 @@ class BackgroundController < ApplicationController
 
     #Leer Cola de Amazon SQS
     puts 'Inicio Leer Cola'
-    sqs = AWS::SQS.new()
+    sqs = AWS::SQS.new(region: 'us-east-1')
     q = sqs.queues.create 'IN_Queue_UniCloud'
     m =  q.receive_messages
 
@@ -62,18 +63,22 @@ class BackgroundController < ApplicationController
 
       #Eliminar Archivo Temporales
       eliminarArchivos(nArchivoOrig,nArchivoConv)
+
+      #Actualizar Estado En BD
+      cambiarEstadoVideo(idEnt)
+
       #m.delete
 
-  #Manejo de Excepciones
-  #rescue
-     # puts 'No Hay Mensajes por Procesar'
+      #Manejo de Excepciones
+      #rescue
+      # puts 'No Hay Mensajes por Procesar'
 
   end
 
   def self.descargarVideo(keyS3,nArchivo)
 
     puts 'Inicio Descargar Archivo: ' + keyS3
-    s3 = AWS::S3.new
+    s3 = AWS::S3.new(region: 'us-east-1')
     bucket = s3.buckets['unicloudstorage']
     obj = bucket.objects[keyS3]
     File.open(nArchivo, 'wb') do |file|
@@ -92,7 +97,7 @@ class BackgroundController < ApplicationController
 
   def self.subirVideo(keyS3,archivo)
     puts 'Inicio Subir Video'
-    s3 = AWS::S3.new
+    s3 = AWS::S3.new(region: 'us-east-1')
     bucket = s3.buckets['unicloudstorage']
     obj = bucket.objects[keyS3]
     obj.write(File.open(archivo, 'rb'))
@@ -105,7 +110,24 @@ class BackgroundController < ApplicationController
   end
 
   def self.enviarEmail
+    #UserMailer.videoconvertido_email('ing.aduran@gmail.co
+    # m').deliver
+    ses = AWS::SimpleEmailService.new(:access_key_id => 'AKIAIPPANZZ7CH6L6BQA',
+                                      :secret_access_key => 'AnegceK5/c3Ob5DQ9PXKOPMUxYBrMGuGIOiv7wdun4NK',
+                                      region: 'us-east-1',
+                                      :ses => { :region => 'us-east-1' })
+    #identity = ses.identities.verify('ing.aduran@gmail.com')
+    ses.send_email(
+        :subject => 'A Sample Email',
+        :from => 'ing.aduran@gmail.com',
+        :to => 'ing.aduran@gmail.com',
+        :body_text => 'Sample email text.',
+        :body_html => '<h1>Sample Email</h1>')
+  end
 
+  def self.cambiarEstadoVideo(id)
+    @competitor = Competitor.find(id)
+    @competitor.update_attributes(:status_video => 'Convertido')
   end
 
 end
