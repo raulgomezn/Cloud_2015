@@ -10,7 +10,7 @@ class Competition
   :bucket => 'unicloudstorage',
   :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
 
-  table :name => :competitions, :key => :id, :hash_key => { :id => :string }, :read_capacity => 5, :write_capacity => 5
+  table :name => :competitions, :key => :id, :read_capacity => 5, :write_capacity => 5
   
   #field :id, :string
   field :name,  :string
@@ -34,7 +34,7 @@ class Competition
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :prize, length: { maximum: 255}
-  validates :banner, presence: true
+  #validates :banner, presence: true
   VALID_URL_REGEX = /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9]))*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])\z/
   validates :url, presence: true, length: { minimum: 4, maximum: 15 },
   format: { with: VALID_URL_REGEX }#, uniqueness: true
