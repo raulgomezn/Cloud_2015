@@ -67,6 +67,9 @@ class BackgroundController < ApplicationController
       #Actualizar Estado En BD
       cambiarEstadoVideo(idEnt)
 
+      #Enviar Correo Electronico al Usuario
+      enviarEmail(email,'Su video '+nArchivoOrig[0,nArchivoOrig.index('.')]+' está disponible para reproducción')
+
       #m.delete
 
       #Manejo de Excepciones
@@ -109,17 +112,17 @@ class BackgroundController < ApplicationController
     File.delete(nArchivoConv)
   end
 
-  def self.enviarEmail
+  def self.enviarEmail(direccion,mensaje)
     #UserMailer.videoconvertido_email('ing.aduran@gmail.co
     # m').deliver
     ses = AWS::SimpleEmailService.new(region: 'us-east-1')
     #identity = ses.identities.verify('ing.aduran@gmail.com')
     ses.send_email(
-        :subject => 'A Sample Email',
-        :from => 'ing.aduran@gmail.com',
-        :to => 'ing.aduran@gmail.com',
-        :body_text => 'Sample email text.',
-        :body_html => '<h1>Sample Email</h1>')
+        :subject => 'Unicloud - Video Convertido',
+        :from => 'admon@unicloud.com',
+        :to => direccion,
+        :body_text => mensaje,
+        :body_html => '<h1>'+mensaje+'</h1>')
   end
 
   def self.cambiarEstadoVideo(id)
