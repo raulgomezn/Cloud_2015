@@ -37,6 +37,7 @@ gem 'bcrypt'
 gem 'will_paginate', '~> 3.0.5'
 gem 'rufus-scheduler','3.1.7'
 
+gem 'dalli'
 
 #gem 'mongoid'
 gem 'bson_ext'
