@@ -65,7 +65,7 @@ class BackgroundController < ApplicationController
       eliminarArchivos(nArchivoOrig,nArchivoConv)
 
       #Actualizar Estado En BD
-      cambiarEstadoVideo(idEnt)
+      cambiarEstadoVideo(idEnt,nArchivoConv)
 
       #Enviar Correo Electronico al Usuario
       enviarEmail(email,'Su video '+nArchivoOrig[0,nArchivoOrig.index('.')]+' está disponible para reproducción')
@@ -125,9 +125,9 @@ class BackgroundController < ApplicationController
         :body_html => '<h1>'+mensaje+'</h1>')
   end
 
-  def self.cambiarEstadoVideo(id)
+  def self.cambiarEstadoVideo(id, nArchivoNuevo)
     @competitor = Competitor.find(id)
-    @competitor.update_attributes(:status_video => 'Convertido')
+    @competitor.update_attributes(:status_video => 'Convertido', :video_converted => nArchivoNuevo)
   end
 
 end
