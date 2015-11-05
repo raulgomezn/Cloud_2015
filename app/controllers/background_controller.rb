@@ -119,7 +119,7 @@ class BackgroundController < ApplicationController
     #identity = ses.identities.verify('ing.aduran@gmail.com')
     ses.send_email(
         :subject => 'Unicloud - Video Convertido',
-        :from => 'admon@unicloud.com',
+        :from => 'ea.duran@uniandes.edu.co',
         :to => direccion,
         :body_text => mensaje,
         :body_html => '<h1>'+mensaje+'</h1>')
