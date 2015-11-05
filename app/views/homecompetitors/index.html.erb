@@ -15,6 +15,9 @@
 <% @competitors.each do |competitor| %>
     <p>
       Participante: <td><%= competitor.first_name %></td> <td><%= competitor.last_name %></td>
+        PATH <td><%= competitor.video_converted.path %></td>
+        PATH() <td><%= competitor.video_converted.path() %></td>
+        URL <td><%= competitor.video_converted.url() %></td>
 
     <div id="<%= competitor.id %>">Loading the player...</div>
     <script type="text/javascript">
