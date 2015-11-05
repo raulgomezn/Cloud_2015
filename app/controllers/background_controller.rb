@@ -7,8 +7,9 @@ class BackgroundController < ApplicationController
              :secret_access_key => ENV['secret_access_key'])
 
   def self.escribirCola(mensaje)
+    puts '<-------COLA '+ mensaje
     logger.info "Inicio Escribir Cola Para Mensaje: " + mensaje
-    sqs = AWS::SQS.new()
+    sqs = AWS::SQS.new(region: 'us-east-1')
     #q = sqs.queues.create 'competitors/video_originals/100/clases_primaria4.avi'
     q = sqs.queues.create 'IN_Queue_UniCloud'
     loop do

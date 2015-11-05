@@ -44,7 +44,7 @@ class Competitor
   #validates :video_original, presence: true
   
   
-  validates_attachment_content_type :video_original, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
-  validates_attachment_content_type :video_converted, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
+  #validates_attachment_content_type :video_original, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
+  #validates_attachment_content_type :video_converted, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
   
 end
