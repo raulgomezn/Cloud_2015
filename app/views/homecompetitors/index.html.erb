@@ -15,12 +15,15 @@
 <% @competitors.each do |competitor| %>
     <p>
       Participante: <td><%= competitor.first_name %></td> <td><%= competitor.last_name %></td>
+        PATH <td><%= competitor.video_converted.path %></td><br>
+        PATH() <td><%= competitor.video_converted.path() %></td><br>
+        URL <td><%= competitor.video_converted.url() %></td>
 
     <div id="<%= competitor.id %>">Loading the player...</div>
     <script type="text/javascript">
         var playerInstance = jwplayer("<%= competitor.id %>");
         playerInstance.setup({
-            file: "<%= competitor.video_converted.url() %>",
+            file: "<%= url_final(competitor.video_converted.path) %>",
             width: 640,
             height: 360,
             title: 'Basic Video Embed',
@@ -34,4 +37,3 @@
 <% end %>
 <br>
 <%= link_to 'Ingresa tu video y participa!', new_competitor_path(:competition_id => @competition.id),class: "btn btn-default" %>
-
