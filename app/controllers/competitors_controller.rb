@@ -29,6 +29,7 @@ class CompetitorsController < ApplicationController
   # POST /competitors.json
   def create
     @competitor = Competitor.new(competitor_params)
+    @competitor.video_converted = @competitor.video_original
     @competitor.status_video = 'En Proceso'
     @competitor.date_admission = Time.now.getutc
     @competition = Competition.find(@competitor.competitions_id)
