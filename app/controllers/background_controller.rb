@@ -26,7 +26,7 @@ class BackgroundController < ApplicationController
 
   def self.procesarVideo
     scheduler = Rufus::Scheduler.new
-    scheduler.every '5m' do
+    scheduler.every '30s' do
       leerCola
     end
     scheduler.join
@@ -70,9 +70,9 @@ class BackgroundController < ApplicationController
       #Enviar Correo Electronico al Usuario
       enviarEmail(email,'Su video '+nArchivoOrig[0,nArchivoOrig.index('.')]+' está disponible para reproducción')
 
-      #m.delete
+      m.delete
 
-      #Manejo de Excepciones
+      #|Manejo de Excepciones
       #rescue
       # puts 'No Hay Mensajes por Procesar'
 
@@ -103,8 +103,9 @@ class BackgroundController < ApplicationController
     s3 = AWS::S3.new(region: 'us-east-1')
     bucket = s3.buckets['unicloudstorage']
     obj = bucket.objects[keyS3]
-    obj.write(File.open(archivo, 'rb'))
+    obj.write(File.open(archivo, 'rb'),:acl => :public_read)
     puts 'Fin Subir Video'
+
   end
 
   def self.eliminarArchivos(narchivoOrg,nArchivoConv)
@@ -127,7 +128,7 @@ class BackgroundController < ApplicationController
 
   def self.cambiarEstadoVideo(id, nArchivoNuevo)
     @competitor = Competitor.find(id)
-    @competitor.update_attributes(:status_video => 'Convertido', :video_converted => nArchivoNuevo)
+    @competitor.update_attributes(:status_video => 'Convertido', :video_converted_file_name => nArchivoNuevo)
   end
 
 end
