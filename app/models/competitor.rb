@@ -29,6 +29,8 @@ class Competitor
   field :competitions_id,  :string
   field :hash, :serialized
   
+  field :video_converted_file_name,  :string
+  
   #index :email
     
   belongs_to :competition, dependent: :destroy
