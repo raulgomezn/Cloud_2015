@@ -15,7 +15,7 @@ config/amazon_ses.yml
 
 # archivos subidos
 /public/system/
-/public/assets/
+/public/assets/*
 
 # Ignore bundler config.
 /.bundle
