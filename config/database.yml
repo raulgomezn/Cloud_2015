@@ -28,7 +28,23 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-
+  host: "cloud2015.csxrnw9neitk.sa-east-1.rds.amazonaws.com"
+  port: 5432
+  adapter: "postgresql"
+  encoding: "utf8"
+  database: "cloud2015"
+  pool: 5
+  username: "cloud"
+  password: "cloud2015"
+  reconnect: true
   
 production:
-
+  host: "cloud2015.csxrnw9neitk.sa-east-1.rds.amazonaws.com"
+  port: 5432
+  adapter: "postgresql"
+  encoding: "utf8"
+  database: "cloud2015"
+  pool: 5
+  username: "cloud"
+  password: "cloud2015"
+  reconnect: true
