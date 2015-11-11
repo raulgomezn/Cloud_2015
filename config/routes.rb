@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Workspace::Application.routes.draw do
   get 'homecompetitors/index'
 
   get     'sessions/new'
