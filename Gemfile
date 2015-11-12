@@ -6,14 +6,11 @@ gem "aws-ses", "~> 0.6.0", :require => 'aws/ses'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.3'
 
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails'#,   '~> 3.2.3'
 gem 'coffee-rails'#, '~> 3.2.1'
 gem 'uglifier', '>= 1.0.3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -24,24 +21,20 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
-#gem 'aws-sdk-rails', '~> 1.0'
 gem 'aws-sdk', '< 2.0'
-# Otras
-gem 'paperclip', '~> 4.3'
+# Para DynamoDB
+gem 'dynamoid'
+gem 'dynamoid-paperclip'
+
 gem 'figaro'
-gem 'pg'
+#gem 'pg'
 gem 'bcrypt'
-# gem 'bootstrap-sass',       '3.2.0.0'
+
+
 gem 'will_paginate', '~> 3.0.5'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'rufus-scheduler','3.1.7'
+#gem 'dalli'
+gem 'bson_ext'
 
 gem 'puma'
 
@@ -57,7 +50,6 @@ group :development, :test do
 end
 
 group :production do
-#  gem 'pg'
   gem 'rails_12factor', '0.0.2'
   
 end
