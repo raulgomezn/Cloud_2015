@@ -75,7 +75,7 @@ Workspace::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
-  #config.active_record.dump_schema_after_migration = false
+  config.active_record.dump_schema_after_migration = false
   
   #config.web_console.whitelisted_ips = '161.18.10.20'
   #config.web_console.whitelisted_ips = '157.253.163.53'
