@@ -14,7 +14,7 @@ Workspace::Application.routes.draw do
   get 'users/new'
   get 'signup'  => 'users#new'
 
-  root 'home#index'
+  root :to => 'home#index'
 
   get ':url'  =>  'homecompetitors#index'
 
