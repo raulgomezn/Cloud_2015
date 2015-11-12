@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
+ruby "2.2.3"
 
 gem "aws-ses", "~> 0.6.0", :require => 'aws/ses'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 4.2.3'
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
@@ -42,6 +43,8 @@ gem 'will_paginate', '~> 3.0.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'puma'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -56,6 +59,5 @@ end
 group :production do
 #  gem 'pg'
   gem 'rails_12factor', '0.0.2'
-  gem 'puma',           '2.11.1'
+  
 end
-ruby "2.2.1"
