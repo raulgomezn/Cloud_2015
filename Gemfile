@@ -3,12 +3,13 @@ source 'https://rubygems.org'
 gem "aws-ses", "~> 0.6.0", :require => 'aws/ses'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '3.2.6'
+gem 'rails', '~> 4.2.0'
+
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails',   '~> 3.2.3'
-gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails'#,   '~> 3.2.3'
+gem 'coffee-rails'#, '~> 3.2.1'
 gem 'uglifier', '>= 1.0.3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -57,3 +58,4 @@ group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'puma',           '2.11.1'
 end
+ruby "2.2.1"

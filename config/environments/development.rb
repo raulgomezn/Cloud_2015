@@ -39,10 +39,6 @@ Workspace::Application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
-  config.web_console.whitelisted_ips = '161.18.10.20'
-  config.web_console.whitelisted_ips = '157.253.163.53'
-  config.web_console.whitelisted_ips = '190.252.61.136'
-  
   # Paperclip
   Paperclip.options[:command_path] = "/usr/bin/"
   
