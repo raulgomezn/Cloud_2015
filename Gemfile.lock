@@ -174,8 +174,8 @@ DEPENDENCIES
   jquery-rails
   paperclip (~> 4.3)
   pg
-  puma (= 2.11.1)
-  rails (~> 4.2.0)
+  puma
+  rails (~> 4.2.3)
   rails_12factor (= 0.0.2)
   sass-rails
   sdoc
