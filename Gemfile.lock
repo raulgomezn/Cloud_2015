@@ -64,6 +64,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    dalli (2.7.4)
     dynamoid (0.7.1)
       activemodel
       aws-sdk
@@ -178,6 +179,7 @@ DEPENDENCIES
   bson_ext
   byebug
   coffee-rails
+  dalli
   dynamoid
   dynamoid-paperclip
   figaro

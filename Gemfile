@@ -27,13 +27,12 @@ gem 'dynamoid'
 gem 'dynamoid-paperclip'
 
 gem 'figaro'
-#gem 'pg'
 gem 'bcrypt'
 
 
 gem 'will_paginate', '~> 3.0.5'
 gem 'rufus-scheduler','3.1.7'
-#gem 'dalli'
+gem 'dalli'
 gem 'bson_ext'
 
 gem 'puma'
