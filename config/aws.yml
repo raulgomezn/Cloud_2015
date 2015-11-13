@@ -1,8 +1,8 @@
 #Amazon AWS Config
 development: &development
-  access_key_id: ENV['access_key_id']
-  secret_access_key: ENV['secret_access_key']
-  bucket: ENV['bucket']
+  access_key_id: <%= ENV["access_key_id"] %>
+  secret_access_key: <%= ENV["secret_access_key"] %>
+  bucket: <%= ENV["bucket"] %>
   dynamo_db_endpoint:  dynamodb.sa-east-1.amazonaws.com
  
 production:
