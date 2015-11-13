@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @competition.banner.url(:medium) %>
+  <%= image_tag url_final(@competition.banner.path) %>
 </p>
 
 <p>
   <strong>Bienvenido al concurso <%= @competition.name %>!!</strong>
-
 </p>
-
 
 <p>
   <strong>Código del Administrador:</strong>
@@ -76,7 +74,7 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @competitors %>
+
 <% else %>
 <p>
   <strong>Sin Datos:</strong>
@@ -86,4 +84,3 @@
 <br>
 <%= link_to 'Editar', edit_competition_url %> |
 <%= link_to 'Atras', competitions_url %>
-

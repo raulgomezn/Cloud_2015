@@ -1,8 +1,8 @@
 class HomecompetitorsController < ApplicationController
 
   def index
-    @competition = Competition.find_by url: params[:url]
-    @competitors = Competitor.where("competitions_id = ? and status_video = 'Convertido'", @competition.id).paginate(:page => params[:page], :per_page => 50)
+    @competition = Competition.where(:url => params[:url]).first
+    @competitors = Competitor.where(:competitions_id => @competition.id, :status_video => 'Convertido').all
 
   end
 
