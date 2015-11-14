@@ -5,6 +5,7 @@ gem "aws-ses", "~> 0.6.0", :require => 'aws/ses'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.3'
+gem 'newrelic_rpm'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'#,   '~> 3.2.3'

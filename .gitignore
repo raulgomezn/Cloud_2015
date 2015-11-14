@@ -7,6 +7,7 @@
 _amazonses.c9.io.TXT
 /config/application.yml
 config/amazon_ses.yml
+debug
 # ignorar el Cloud9
 /.c9
 .idea
