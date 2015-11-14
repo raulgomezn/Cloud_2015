@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 ruby "2.2.1"
 
-gem "aws-ses", "~> 0.6.0", :require => 'aws/ses'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.3'
+
+# Monitoreo
 gem 'newrelic_rpm'
 
 # Use SCSS for stylesheets
@@ -22,16 +22,17 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', group: :doc
 
+#AWS
 gem 'aws-sdk', '< 2.0'
+
 # Para DynamoDB
 gem 'dynamoid'
 gem 'dynamoid-paperclip'
 
+# Otras
 gem 'figaro'
 gem 'bcrypt'
 
-
-gem 'will_paginate', '~> 3.0.5'
 gem 'rufus-scheduler','3.1.7'
 gem 'dalli'
 gem 'bson_ext'

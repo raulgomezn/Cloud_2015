@@ -37,7 +37,7 @@ class CompetitorsController < ApplicationController
     respond_to do |format|
       if @competitor.save
         #Inicio Escribir Mensaje en Cola
-        #BackgroundController.escribirCola("#{@competitor.id}|#{@competitor.email}|#{@competitor.video_original.path}|#{@competitor.video_original.original_filename()}")
+        BackgroundController.escribirCola("#{@competitor.id}|#{@competitor.email}|#{@competitor.video_original.path}|#{@competitor.video_original.original_filename()}")
         #Fin Escribir Mensaje en Cola
         format.html { redirect_to "/" + @competition.url, notice: 'Hemos Recibido Tu Video. Te Enviaremos un Correo Electronico Cuando el Video Este Disponible!' }
         format.json { render :show, status: :created, location: @competitor }

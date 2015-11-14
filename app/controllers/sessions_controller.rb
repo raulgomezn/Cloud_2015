@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       pass2 = user.password
       if pass2 == pass.to_s && mail2 == mail.to_s
         # Log the user in and redirect to the user's show page.
-        puts '-----> If'
+        puts '-----> If ' + user.email
         log_in user
         @user = user
         redirect_to competitions_url
