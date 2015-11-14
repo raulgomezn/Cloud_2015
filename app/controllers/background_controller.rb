@@ -3,8 +3,8 @@ class BackgroundController < ApplicationController
   #Congiracion AWS
   require 'aws-sdk'
   require 'rufus-scheduler'
-  #AWS.config(:access_key_id => ENV['access_key_id'],
-  #           :secret_access_key => ENV['secret_access_key'])
+  AWS.config(:access_key_id => ENV['access_key_id'],
+             :secret_access_key => ENV['secret_access_key'])
   
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
@@ -24,7 +24,7 @@ class BackgroundController < ApplicationController
 
   def self.procesarVideo
     puts 'Inicio Procesar Video: '
-    scheduler = Rufus::Scheduler.singleton
+    scheduler = Rufus::Scheduler.new
     scheduler.every '30s' do
       leerCola
     end
