@@ -24,7 +24,7 @@ class BackgroundController < ApplicationController
 
   def self.procesarVideo
     puts 'Inicio Procesar Video: '
-    scheduler = Rufus::Scheduler.new
+    scheduler = Rufus::Scheduler.singleton
     scheduler.every '30s' do
       leerCola
     end
