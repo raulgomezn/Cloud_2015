@@ -1,6 +1,4 @@
 heroku config:set NEW_RELIC_ANALYTICS_EVENTS_MAX_SAMPLES_STORED=500
-heroku config:set NEW_RELIC_log_level= "debug"
-heroku config:set NEW_RELIC_APP_NAME='unicloud2015'
 #
 # This file configures the New Relic Agent.  New Relic monitors Ruby, Java,
 # .NET, PHP, Python and Node applications with deep visibility and low
@@ -8,14 +6,14 @@ heroku config:set NEW_RELIC_APP_NAME='unicloud2015'
 #
 # Generated November 14, 2015
 # 
-# This configuration file is custom generated for app41570893@heroku.com
+# This configuration file is custom generated for
 #
 # For full documentation of agent configuration options, please refer to
 # https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
 
 common: &default_settings
   # Required license key associated with your New Relic account.
-  license_key: '<%= ENV["NEW_RELIC_LICENSE_KEY"] %>'
+  license_key: <%= ENV["NEW_RELIC_LICENSE_KEY"] %>
 
   # Your application name. Renaming here affects where data displays in New
   # Relic.  For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
@@ -25,7 +23,7 @@ common: &default_settings
   # agent_enabled: false
 
   # Logging level for log/newrelic_agent.log
-  log_level: '<%= ENV["NEW_RELIC_LOG"] %>'
+  log_level: <%= ENV["NEW_RELIC_LOG"] %>
 
 
 # Environment-specific settings are in this section.

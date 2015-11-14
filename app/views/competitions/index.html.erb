@@ -6,7 +6,7 @@
 <table frame="border" border="4">
   <thead>
     <tr>
-      <th>Usuarios</th>
+      <th>Código del Concurso</th>
       <th>Nombre</th>
       <th>Url</th>
       <th>Fecha de inicio</th>
@@ -19,7 +19,7 @@
   <tbody>
     <% @competitions.each do |competition| %>
       <tr>
-        <td><%= competition.users_id %></td>
+        <td><%= competition.id %></td>
         <td><%= competition.name %></td>
         <td><%= competition.url %></td>
         <td><%= competition.start_date %></td>
