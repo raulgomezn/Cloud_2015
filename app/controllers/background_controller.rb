@@ -9,7 +9,7 @@ class BackgroundController < ApplicationController
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
     puts "Inicio Escribir Cola Para Mensaje: " + mensaje
-    sqs = AWS::SQS.new(region: 'sa-east-1')
+    sqs = AWS::SQS.new(region: 'us-east-1')
     q = sqs.queues.create 'IN_Queue_UniCloud'
     loop do
       if q.exists?
@@ -36,7 +36,7 @@ class BackgroundController < ApplicationController
 
     #Leer Cola de Amazon SQS
     puts 'Inicio Leer Cola'
-    sqs = AWS::SQS.new(region: 'sa-east-1')
+    sqs = AWS::SQS.new(region: 'us-east-1')
     q = sqs.queues.create 'IN_Queue_UniCloud'
     m =  q.receive_messages
 
