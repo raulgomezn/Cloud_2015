@@ -36,7 +36,7 @@ class BackgroundController < ApplicationController
 
     #Leer Cola de Amazon SQS
     puts 'Inicio Leer Cola'
-    sqs = AWS::SQS.new(region: 'us-east-1')
+    sqs = AWS::SQS.new(region: 'sa-east-1')
     q = sqs.queues.create 'IN_Queue_UniCloud'
     m =  q.receive_messages
 
