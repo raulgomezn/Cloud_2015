@@ -43,16 +43,17 @@ Workspace::Application.configure do
   Paperclip.options[:command_path] = "/usr/bin/"
   
   # Email
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address:        'smtp.sendgrid.net',
-  port:           587,
-  authentication: 'plain',
-  user_name:      'app41570893@heroku.com',
-  password:       'btika1zf0132',
-  domain:         'heroku.com',
-  enable_starttls_auto:  true }
-  config.action_mailer.perform_deliveries = true
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true }
   
   # Paperclip (for Amazon) 
   config.paperclip_defaults = {
@@ -66,7 +67,6 @@ Workspace::Application.configure do
   }
   AWS.config(
    access_key_id: ENV['access_key_id'], 
-   secret_access_key: ENV['secret_access_key'], 
-   region: 's3-sa-east-1'
+   secret_access_key: ENV['secret_access_key']
   )
 end
