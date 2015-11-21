@@ -4,8 +4,11 @@ class BackgroundController < ApplicationController
   require 'aws-sdk'
   require 'rufus-scheduler'
 
-  #AWS.config(:access_key_id => ENV['access_key_id'],
-  #           :secret_access_key => ENV['secret_access_key'])
+  AWS.config(
+    access_key_id: ENV['access_key_id'], 
+    secret_access_key: ENV['secret_access_key'],
+    region: 'us-east-1'
+  )
   
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
