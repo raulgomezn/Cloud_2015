@@ -6,11 +6,6 @@ class BackgroundController < ApplicationController
   require 'aws-sdk'
   require 'rufus-scheduler'
 
-  #AWS.config(
-  #  access_key_id: ENV['access_key_id'], 
-  #  secret_access_key: ENV['secret_access_key']
-  #)
-  
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
     puts "Inicio Escribir Cola Para Mensaje: " + mensaje
@@ -31,10 +26,10 @@ class BackgroundController < ApplicationController
   def self.procesarVideo
     puts 'Inicio Procesar Video: '
     scheduler = Rufus::Scheduler.new
-    scheduler.every '1m' do
+    scheduler.every '2m' do
       leerCola
     end
-    scheduler.join
+    #scheduler.join
   end
 
   def self.leerCola
@@ -53,35 +48,38 @@ class BackgroundController < ApplicationController
     b.stop # close the connection
     b.close
     
-    body = payload #m.body()
-    arr = body.split('|')
-    idEnt = arr[0];email = arr[1];keyTMP = arr[2];nArchivo = arr[3]
-    keyS3 = keyTMP[1,keyTMP.length]
-    puts 'Fin Leer Cola'
-
-    #Descargar Video
-    nArchivoOrig = idEnt+'_'+nArchivo
-    descargarVideo(keyS3,nArchivoOrig)
-
-    #Convertir Video
-    nArchivoConv = nArchivoOrig[0,nArchivoOrig.index('.')]+'.mp4'
-    convertirVideo(nArchivoOrig,nArchivoConv)
-
-    #Subir Video Convertido a Amazon
-    keyS3Conv = 'competitors/video_converteds/'+idEnt+'/'+nArchivoConv
-
-    subirVideo(keyS3Conv,nArchivoConv)
-
-    #Eliminar Archivo Temporales
-    eliminarArchivos(nArchivoOrig,nArchivoConv)
-
-    #Actualizar Estado En BD
-    cambiarEstadoVideo(idEnt,nArchivoConv)
-
-    #Enviar Correo Electronico al Usuario
-    #enviarEmail(email,'Su video '+nArchivoOrig[0,nArchivoOrig.index('.')]+' está disponible para reproducción')
-    UserMailer.video_email(email).deliver
-    m.delete
+    if payload.any?
+      puts "<----> Seccion de convertirVideo"
+      body = payload #m.body()
+      arr = body.split('|')
+      idEnt = arr[0];email = arr[1];keyTMP = arr[2];nArchivo = arr[3]
+      keyS3 = keyTMP[1,keyTMP.length]
+      puts 'Fin Leer Cola'
+  
+      #Descargar Video
+      nArchivoOrig = idEnt+'_'+nArchivo
+      descargarVideo(keyS3,nArchivoOrig)
+  
+      #Convertir Video
+      nArchivoConv = nArchivoOrig[0,nArchivoOrig.index('.')]+'.mp4'
+      convertirVideo(nArchivoOrig,nArchivoConv)
+  
+      #Subir Video Convertido a Amazon
+      keyS3Conv = 'competitors/video_converteds/'+idEnt+'/'+nArchivoConv
+  
+      subirVideo(keyS3Conv,nArchivoConv)
+  
+      #Eliminar Archivo Temporales
+      eliminarArchivos(nArchivoOrig,nArchivoConv)
+  
+      #Actualizar Estado En BD
+      cambiarEstadoVideo(idEnt,nArchivoConv)
+  
+      #Enviar Correo Electronico al Usuario
+      #enviarEmail(email,'Su video '+nArchivoOrig[0,nArchivoOrig.index('.')]+' está disponible para reproducción')
+      UserMailer.video_email(email).deliver
+      m.delete
+    end
   end
 
   def self.descargarVideo(keyS3,nArchivo)
