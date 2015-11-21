@@ -28,6 +28,8 @@ gem 'aws-sdk', '< 2.0'
 # Para DynamoDB
 gem 'dynamoid'
 gem 'dynamoid-paperclip'
+#cola
+gem "bunny"
 
 # Otras
 #gem 'figaro'

@@ -1,28 +1,29 @@
 class BackgroundController < ApplicationController
 
   #Congiracion AWS
+  require "rubygems"
+  require "bunny"
   require 'aws-sdk'
   require 'rufus-scheduler'
 
-  AWS.config(
-    access_key_id: ENV['access_key_id'], 
-    secret_access_key: ENV['secret_access_key'],
-    region: 'us-east-1'
-  )
+  #AWS.config(
+  #  access_key_id: ENV['access_key_id'], 
+  #  secret_access_key: ENV['secret_access_key']
+  #)
   
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
     puts "Inicio Escribir Cola Para Mensaje: " + mensaje
-    sqs = AWS::SQS.new(region: 'us-east-1')
-    q = sqs.queues.create 'IN_Queue_UniCloud'
-    loop do
-      if q.exists?
-        puts "La cola ha sido creada en AWS"
-        break
-      end
-      sleep 1
-    end
-    q.send_message mensaje
+    b = Bunny.new ENV['CLOUDAMQP_URL']
+    b.start # start a communication session with the amqp server
+    
+    q = b.queue 'test1' # declare a queue
+    
+    # publish a message to the queue
+    q.publish mensaje
+    
+    b.stop # close the connection
+
     puts "Fin Escribir Cola Para Mensaje: " + mensaje
   end
 
@@ -32,18 +33,25 @@ class BackgroundController < ApplicationController
     scheduler.every '1m' do
       leerCola
     end
-    #scheduler.join
-
+    scheduler.join
   end
 
   def self.leerCola
     #Leer Cola de Amazon SQS
     puts 'Inicio Leer Cola'
-    sqs = AWS::SQS.new(region: 'us-east-1')
-    q = sqs.queues.create 'IN_Queue_UniCloud'
-    m =  q.receive_messages
+    
+    b = Bunny.new ENV['CLOUDAMQP_URL']
+    b.start # start a communication session with the amqp server
+    
+    q = b.queue 'test1' # declare a queue
+    
+    delivery_properties, headers, payload = q.pop # retrieve one message from the queue
 
-    body = m.body()
+    puts "This is the message: " + payload + "\n\n"
+    
+    b.stop # close the connection
+
+    body = payload #m.body()
     arr = body.split('|')
     idEnt = arr[0];email = arr[1];keyTMP = arr[2];nArchivo = arr[3]
     keyS3 = keyTMP[1,keyTMP.length]
@@ -109,18 +117,6 @@ class BackgroundController < ApplicationController
     File.delete(nArchivoConv)
   end
 
-#   def self.enviarEmail(direccion,mensaje)
-#     #UserMailer.videoconvertido_email('ing.aduran@gmail.co
-#     # m').deliver
-#     ses = AWS::SimpleEmailService.new(region: 'us-east-1')
-#     #identity = ses.identities.verify('ing.aduran@gmail.com')
-#     ses.send_email(
-#         :subject => 'Unicloud - Video Convertido',
-#         :from => 'ea.duran@uniandes.edu.co',
-#         :to => direccion,
-#         :body_text => mensaje,
-#         :body_html => '<h1>'+mensaje+'</h1>')
-#   end
 
   def self.cambiarEstadoVideo(id, nArchivoNuevo)
     @competitor = Competitor.find(id)
