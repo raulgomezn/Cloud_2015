@@ -104,6 +104,11 @@ Workspace::Application.configure do
         :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
     }
   }
+  
+  AWS::SQS::Client.new(
+    access_key_id: ENV['access_key_id'],
+    secret_access_key: ENV['secret_access_key']
+  )
   AWS.config(
    access_key_id: ENV['access_key_id'], 
    secret_access_key: ENV['secret_access_key']

@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
         puts '-----> If ' + user.email
         log_in user
         @user = user
+        
         redirect_to competitions_url
         #redirect_to user
       else

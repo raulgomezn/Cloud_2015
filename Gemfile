@@ -30,10 +30,10 @@ gem 'dynamoid'
 gem 'dynamoid-paperclip'
 
 # Otras
-gem 'figaro'
+#gem 'figaro'
 gem 'bcrypt'
 
-gem 'rufus-scheduler','3.1.7'
+gem 'rufus-scheduler'
 gem 'dalli'
 gem 'bson_ext'
 

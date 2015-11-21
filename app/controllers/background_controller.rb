@@ -3,6 +3,7 @@ class BackgroundController < ApplicationController
   #Congiracion AWS
   require 'aws-sdk'
   require 'rufus-scheduler'
+
   #AWS.config(:access_key_id => ENV['access_key_id'],
   #           :secret_access_key => ENV['secret_access_key'])
   
@@ -24,11 +25,12 @@ class BackgroundController < ApplicationController
 
   def self.procesarVideo
     puts 'Inicio Procesar Video: '
-    scheduler = Rufus::Scheduler.singleton
+    scheduler = Rufus::Scheduler.new
     scheduler.every '1m' do
       leerCola
     end
-    scheduler.join
+    #scheduler.join
+
   end
 
   def self.leerCola
