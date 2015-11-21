@@ -29,7 +29,7 @@ class BackgroundController < ApplicationController
     scheduler.every '2m' do
       leerCola
     end
-    #scheduler.join
+    scheduler.join
   end
 
   def self.leerCola
