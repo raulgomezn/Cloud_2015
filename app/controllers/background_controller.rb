@@ -23,7 +23,8 @@ class BackgroundController < ApplicationController
     q.publish mensaje
     
     b.stop # close the connection
-
+    b.close
+    
     puts "Fin Escribir Cola Para Mensaje: " + mensaje
   end
 
@@ -50,7 +51,8 @@ class BackgroundController < ApplicationController
     puts "This is the message: " + payload + "\n\n"
     
     b.stop # close the connection
-
+    b.close
+    
     body = payload #m.body()
     arr = body.split('|')
     idEnt = arr[0];email = arr[1];keyTMP = arr[2];nArchivo = arr[3]
@@ -116,7 +118,6 @@ class BackgroundController < ApplicationController
     File.delete(narchivoOrg)
     File.delete(nArchivoConv)
   end
-
 
   def self.cambiarEstadoVideo(id, nArchivoNuevo)
     @competitor = Competitor.find(id)
