@@ -27,7 +27,7 @@ class BackgroundController < ApplicationController
   def self.procesarVideo
     puts 'Inicio Procesar Video: '
     scheduler = Rufus::Scheduler.new
-    scheduler.every '2m' do
+    scheduler.every '1m' do
       leerCola
     end
     scheduler.join
@@ -45,8 +45,8 @@ class BackgroundController < ApplicationController
     delivery_properties, headers, payload = q.pop # retrieve one message from the queue
     b.stop # close the connection
     b.close
-    puts "º---CLOSE cola"
-    puts "This is the message: " + payload
+    puts "<---CLOSE cola"
+    puts "This is the message: " + payload.blank? ? "Vacio" : payload
     
     if !payload.blank?
       puts "<----> Seccion de convertirVideo"
@@ -76,9 +76,7 @@ class BackgroundController < ApplicationController
       cambiarEstadoVideo(idEnt,nArchivoConv)
   
       #Enviar Correo Electronico al Usuario
-      #enviarEmail(email,'Su video '+nArchivoOrig[0,nArchivoOrig.index('.')]+' está disponible para reproducción')
       UserMailer.video_email(email).deliver
-      m.delete
     end
   end
 
