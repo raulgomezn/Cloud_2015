@@ -41,7 +41,7 @@ class BackgroundController < ApplicationController
     
     q = b.queue 'test1' # declare a queue
     
-    delivery_properties, headers, payload = q.pop # retrieve one message from the queue
+    payload = q.pop # retrieve one message from the queue
 
     puts "This is the message: " + payload + "\n\n"
     

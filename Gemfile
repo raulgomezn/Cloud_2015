@@ -30,6 +30,8 @@ gem 'dynamoid'
 gem 'dynamoid-paperclip'
 #cola
 gem "bunny"
+#hirefire
+gem 'hirefire-resource'
 
 # Otras
 #gem 'figaro'
