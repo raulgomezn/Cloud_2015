@@ -9,16 +9,17 @@ class BackgroundController < ApplicationController
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
     puts "Inicio Escribir Cola Para Mensaje: " + mensaje
-    b = Bunny.new ENV['CLOUDAMQP_URL']
-    b.start # start a communication session with the amqp server
-    
-    q = b.queue 'test1' # declare a queue
-    
-    # publish a message to the queue
-    q.publish mensaje
-    
-    b.stop # close the connection
-    b.close
+    BunnyClient.instance.publish(mensaje)
+    #b = Bunny.new ENV['CLOUDAMQP_URL']
+    #b.start # start a communication session with the amqp server
+    #
+    #q = b.queue 'test1' # declare a queue
+    #
+    ## publish a message to the queue
+    #q.publish mensaje
+    #
+    #b.stop # close the connection
+    #b.close
     
     puts "Fin Escribir Cola Para Mensaje: " + mensaje
   end
@@ -36,17 +37,19 @@ class BackgroundController < ApplicationController
     #Leer Cola de Amazon SQS
     puts 'Inicio Leer Cola'
     
-    b = Bunny.new ENV['CLOUDAMQP_URL']
-    b.start # start a communication session with the amqp server
+    payload = BunnyClient.instance.read
     
-    q = b.queue 'test1' # declare a queue
-    
-    payload = q.pop # retrieve one message from the queue
-
-    puts "This is the message: " + payload + "\n\n"
-    
-    b.stop # close the connection
-    b.close
+    #b = Bunny.new ENV['CLOUDAMQP_URL']
+    #b.start # start a communication session with the amqp server
+    #
+    #q = b.queue 'test1' # declare a queue
+    #
+    #payload = q.pop # retrieve one message from the queue
+#
+    #puts "This is the message: " + payload + "\n\n"
+    #
+    #b.stop # close the connection
+    #b.close
     
     if payload.any?
       puts "<----> Seccion de convertirVideo"
