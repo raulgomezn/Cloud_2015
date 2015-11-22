@@ -14,7 +14,7 @@ class BackgroundController < ApplicationController
     bunny.start
     bunny_channel  = bunny.create_channel
     regular_tasks = bunny_channel.queue('test1')
-    regular_tasks.publish message
+    regular_tasks.publish mensaje
     bunny.close
     #b = Bunny.new ENV['CLOUDAMQP_URL']
     #b.start # start a communication session with the amqp server
