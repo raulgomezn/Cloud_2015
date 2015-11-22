@@ -9,7 +9,13 @@ class BackgroundController < ApplicationController
   def self.escribirCola(mensaje)
     puts '<-------COLA '+ mensaje
     puts "Inicio Escribir Cola Para Mensaje: " + mensaje
-    BunnyClient.instance.publish(mensaje)
+    
+    bunny = Bunny.new ENV['CLOUDAMQP_URL']
+    bunny.start
+    bunny_channel  = bunny.create_channel
+    regular_tasks = bunny_channel.queue( 'test1', durable: true )
+    regular_tasks.publish message
+    bunny.close
     #b = Bunny.new ENV['CLOUDAMQP_URL']
     #b.start # start a communication session with the amqp server
     #
@@ -36,16 +42,20 @@ class BackgroundController < ApplicationController
   def self.leerCola
     #Leer Cola de Amazon SQS
     puts 'Inicio Leer Cola'
-    
-    payload = BunnyClient.instance.read
-    
+    bunny = Bunny.new ENV['CLOUDAMQP_URL']
+    bunny.start
+    bunny_channel  = bunny.create_channel
+    regular_tasks = bunny_channel.queue( 'test1', durable: true )
+    payload = regular_tasks.pop # retrieve one message from the queue
+    puts "This is the message: " + payload + "\n\n"
+    bunny.close
     #b = Bunny.new ENV['CLOUDAMQP_URL']
     #b.start # start a communication session with the amqp server
     #
     #q = b.queue 'test1' # declare a queue
     #
     #payload = q.pop # retrieve one message from the queue
-#
+
     #puts "This is the message: " + payload + "\n\n"
     #
     #b.stop # close the connection
