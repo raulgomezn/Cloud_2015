@@ -13,7 +13,7 @@ class BackgroundController < ApplicationController
     bunny = Bunny.new ENV['CLOUDAMQP_URL']
     bunny.start
     bunny_channel  = bunny.create_channel
-    regular_tasks = bunny_channel.queue( 'test1', durable: true )
+    regular_tasks = bunny_channel.queue('test1')
     regular_tasks.publish message
     bunny.close
     #b = Bunny.new ENV['CLOUDAMQP_URL']
@@ -45,7 +45,7 @@ class BackgroundController < ApplicationController
     bunny = Bunny.new ENV['CLOUDAMQP_URL']
     bunny.start
     bunny_channel  = bunny.create_channel
-    regular_tasks = bunny_channel.queue( 'test1', durable: true )
+    regular_tasks = bunny_channel.queue('test1')
     payload = regular_tasks.pop # retrieve one message from the queue
     puts "This is the message: " + payload + "\n\n"
     bunny.close
