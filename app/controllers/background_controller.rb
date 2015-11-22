@@ -10,22 +10,16 @@ class BackgroundController < ApplicationController
     puts '<-------COLA '+ mensaje
     puts "Inicio Escribir Cola Para Mensaje: " + mensaje
     
-    bunny = Bunny.new ENV['CLOUDAMQP_URL']
-    bunny.start
-    bunny_channel  = bunny.create_channel
-    regular_tasks = bunny_channel.queue('test1')
-    regular_tasks.publish mensaje
-    bunny.close
-    #b = Bunny.new ENV['CLOUDAMQP_URL']
-    #b.start # start a communication session with the amqp server
-    #
-    #q = b.queue 'test1' # declare a queue
-    #
-    ## publish a message to the queue
-    #q.publish mensaje
-    #
-    #b.stop # close the connection
-    #b.close
+    b = Bunny.new ENV['CLOUDAMQP_URL']
+    b.start # start a communication session with the amqp server
+    
+    q = b.queue 'test1' # declare a queue
+    
+    # publish a message to the queue
+    q.publish mensaje
+    
+    b.stop # close the connection
+    b.close
     
     puts "Fin Escribir Cola Para Mensaje: " + mensaje
   end
@@ -42,24 +36,18 @@ class BackgroundController < ApplicationController
   def self.leerCola
     #Leer Cola de Amazon SQS
     puts 'Inicio Leer Cola'
-    bunny = Bunny.new ENV['CLOUDAMQP_URL']
-    bunny.start
-    bunny_channel  = bunny.create_channel
-    regular_tasks = bunny_channel.queue('test1')
-    payload = regular_tasks.pop # retrieve one message from the queue
-    puts "This is the message: " + payload + "\n\n"
-    bunny.close
-    #b = Bunny.new ENV['CLOUDAMQP_URL']
-    #b.start # start a communication session with the amqp server
-    #
-    #q = b.queue 'test1' # declare a queue
-    #
-    #payload = q.pop # retrieve one message from the queue
 
-    #puts "This is the message: " + payload + "\n\n"
-    #
-    #b.stop # close the connection
-    #b.close
+    b = Bunny.new ENV['CLOUDAMQP_URL']
+    b.start # start a communication session with the amqp server
+    
+    q = b.queue 'test1' # declare a queue
+    
+    payload = q.pop # retrieve one message from the queue
+
+    puts "This is the message: " + payload + "\n\n"
+    
+    b.stop # close the connection
+    b.close
     
     if payload.any?
       puts "<----> Seccion de convertirVideo"
