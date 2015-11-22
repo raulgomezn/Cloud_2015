@@ -43,15 +43,16 @@ class BackgroundController < ApplicationController
     q = b.queue 'test1' # declare a queue
     
     payload = q.pop # retrieve one message from the queue
-
-    puts "This is the message: " + payload + "\n\n"
-    
     b.stop # close the connection
     b.close
+    puts "º---CLOSE cola"
+    puts "This is the message: " + payload.to_s
+    
+    
     
     if payload.any?
       puts "<----> Seccion de convertirVideo"
-      body = payload #m.body()
+      body = payload.to_s #m.body()
       arr = body.split('|')
       idEnt = arr[0];email = arr[1];keyTMP = arr[2];nArchivo = arr[3]
       keyS3 = keyTMP[1,keyTMP.length]
