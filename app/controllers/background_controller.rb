@@ -46,11 +46,11 @@ class BackgroundController < ApplicationController
     b.stop # close the connection
     b.close
     puts "<---CLOSE cola"
-    puts "This is the message: " + payload.blank? ? "Vacio" : payload
     
     if !payload.blank?
+      puts "This is the message: " + payload
       puts "<----> Seccion de convertirVideo"
-      body = payload #m.body()
+      body = payload
       arr = body.split('|')
       idEnt = arr[0];email = arr[1];keyTMP = arr[2];nArchivo = arr[3]
       keyS3 = keyTMP[1,keyTMP.length]
