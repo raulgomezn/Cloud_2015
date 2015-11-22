@@ -48,7 +48,7 @@ class BackgroundController < ApplicationController
     puts "º---CLOSE cola"
     puts "This is the message: " + payload
     
-    if payload.nil?
+    if !payload.blank?
       puts "<----> Seccion de convertirVideo"
       body = payload #m.body()
       arr = body.split('|')
