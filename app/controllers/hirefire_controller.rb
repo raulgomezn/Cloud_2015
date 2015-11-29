@@ -3,25 +3,25 @@ class HirefireController < ApplicationController
 
   def info
     render json: JSON.generate([
-      {name: "worker", quantity: 0},
-      {name: "urgent", quantity: 0}
+      {name: "worker", quantity: count_worker}
     ])
   end
 
-  #private
-#
-  #def count_worker
-  #  Delayed::Job
-  #    .where(failed_at: nil)
-  #    .where("run_at <= ?", Time.now.utc)
-  #    .count
-  #end
-#
-  #def count_urgent
-  #  Delayed::Job
-  #    .where(failed_at: nil)
-  #    .where("run_at <= ?", Time.now.utc)
-  #    .where(queue: "urgent")
-  #    .count
-  #end
+  private
+
+  def count_worker
+    puts 'Inicio Leer Cola HirefireController'
+
+    b = Bunny.new ENV['CLOUDAMQP_URL']
+    b.start # start a communication session with the amqp server
+    
+    q = b.queue 'test1' # declare a queue
+    
+    puts q.message_count
+    b.stop # close the connection
+    b.close
+    puts "<---CLOSE cola HirefireController"
+    return q.message_count
+  end
+
 end
