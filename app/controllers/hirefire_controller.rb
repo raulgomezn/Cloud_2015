@@ -1,4 +1,4 @@
-class HireFireController < ApplicationController
+class HirefireController < ApplicationController
   respond_to :json
 
   def info
