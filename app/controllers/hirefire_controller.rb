@@ -9,13 +9,13 @@ class HirefireController < ApplicationController
         
         q = b.queue 'test1' # declare a queue
         
-        puts q.message_count
+        q.message_count
         b.stop # close the connection
         b.close
-        puts "<---CLOSE cola HirefireController"
+        puts "<---CLOSE cola HirefireController #{q.message_count}"
       
         render json: JSON.generate([
-          {name: "worker", quantity: q.message_count}
+          {name: "worker", quantity: q.message_count.nil ? 0: q.message_count}
         ])
     end
 

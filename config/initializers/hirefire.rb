@@ -8,9 +8,9 @@ HireFire::Resource.configure do |config|
     
     q = b.queue 'test1' # declare a queue
     
-    puts q.message_count
     b.stop # close the connection
     b.close
-    puts "<---CLOSE cola hirefire"
+    puts "<---Cerrar cola hirefire #{q.message_count}"
+    q.message_count
   end
 end
