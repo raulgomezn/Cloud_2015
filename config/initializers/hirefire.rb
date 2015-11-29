@@ -7,10 +7,10 @@ HireFire::Resource.configure do |config|
     b.start # start a communication session with the amqp server
     
     q = b.queue 'test1' # declare a queue
-    
+    count = q.message_count
+    puts count
     b.stop # close the connection
     b.close
-    puts "<---Cerrar cola hirefire #{q.message_count.nil ? 0: q.message_count}"
-    q.message_count.nil ? 0: q.message_count
+    puts "<---Cerrar cola hirefire " + count 
   end
 end

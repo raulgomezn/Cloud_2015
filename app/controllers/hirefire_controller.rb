@@ -15,7 +15,7 @@ class HirefireController < ApplicationController
         puts "<---CLOSE cola HirefireController #{q.message_count}"
       
         render json: JSON.generate([
-          {name: "worker", quantity: q.message_count.nil ? 0: q.message_count}
+          {name: "worker", quantity: 0}
         ])
     end
 
