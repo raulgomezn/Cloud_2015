@@ -29,7 +29,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'dynamoid'
 gem 'dynamoid-paperclip'
 #cola
-gem "bunny"
+gem 'bunny'
 #hirefire
 gem 'hirefire-resource'
 
