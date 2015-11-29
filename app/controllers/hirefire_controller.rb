@@ -12,7 +12,7 @@ class HirefireController < ApplicationController
         q.message_count
         b.stop # close the connection
         b.close
-        puts "<---CLOSE cola HirefireController. " + q.message_count.to_i
+        puts "<---CLOSE cola HirefireController. " + q.message_count.to_s
       
         render json: JSON.generate([
           {name: "worker", quantity: 0}
