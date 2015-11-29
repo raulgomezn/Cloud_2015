@@ -3,19 +3,19 @@ class HirefireController < ApplicationController
     
     def info
         puts 'Inicio Leer Cola HirefireController'
-
+    
         b = Bunny.new ENV['CLOUDAMQP_URL']
         b.start # start a communication session with the amqp server
         
         q = b.queue 'test1' # declare a queue
-        
-        q.message_count
+        count = q.message_count.to_i
+        #puts count.to_i
         b.stop # close the connection
         b.close
-        puts "<---CLOSE cola HirefireController. " + q.message_count.to_s
-      
+        puts "<---Cerrar cola hirefire HirefireController" + count.to_s
+
         render json: JSON.generate([
-          {name: "worker", quantity: 0}
+          {name: "worker", quantity: count}
         ])
     end
 
