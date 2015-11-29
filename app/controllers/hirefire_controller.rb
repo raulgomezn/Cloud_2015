@@ -17,11 +17,11 @@ class HirefireController < ApplicationController
     
     q = b.queue 'test1' # declare a queue
     
-    puts q.message_count
+    #puts q.message_count
     b.stop # close the connection
     b.close
     puts "<---CLOSE cola HirefireController"
-    return q.message_count
+    q.message_count
   end
 
 end
