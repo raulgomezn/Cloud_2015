@@ -12,6 +12,6 @@ HireFire::Resource.configure do |config|
     b.stop # close the connection
     b.close
     puts "<---Cerrar cola hirefire " + count.to_s
-    return count
+    count
   end
 end
