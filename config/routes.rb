@@ -17,6 +17,8 @@ Workspace::Application.routes.draw do
   root :to => 'home#index'
 
   get ':url'  =>  'homecompetitors#index'
+  
+  get "/hirefire/#{ENV["HIREFIRE_TOKEN"]}/info", to: "hire_fire#info"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

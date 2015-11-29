@@ -32,7 +32,7 @@ gem 'dynamoid-paperclip'
 gem 'bunny'
 #hirefire
 gem 'hirefire-resource'
-
+gem 'responders', '~> 2.0'
 # Otras
 #gem 'figaro'
 gem 'bcrypt'
