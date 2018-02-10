@@ -1,5 +1,6 @@
 <p>
-  <%= image_tag @competition.banner.url(:medium) %>
+  <!--<%= image_tag @competition.banner.url(:medium) %>-->
+  <%= image_tag url_final(@competition.banner.path) %>
 </p>
 
 <p id="notice"><%= notice %></p>
@@ -10,25 +11,29 @@
 
 </p>
 
-
+<% if !@competitors.nil? %>
 <% @competitors.each do |competitor| %>
-
     <p>
       Participante: <td><%= competitor.first_name %></td> <td><%= competitor.last_name %></td>
+        <!--PATH <td>< competitor.video_converted.path %></td><br>
+        PATH() <td>< competitor.video_converted.path() %></td><br>
+        URL <td>< competitor.video_converted.url() %></td>-->
 
-    <div id="<%= competitor.id %>">Loading the player...</div>
+    <div id="<%= competitor.id %>">Cargando el video...</div>
     <script type="text/javascript">
         var playerInstance = jwplayer("<%= competitor.id %>");
         playerInstance.setup({
-            file: "<%= competitor.video_converted.url() %>",
+            file: "<%= url_final(competitor.video_converted.path) %>",
             width: 640,
             height: 360,
-            title: 'Basic Video Embed',
-            description: 'A video with a basic title and description!'
+            title: '<%= competitor.first_name %> <%= competitor.last_name %>',
+            description: '<%= competitor.message %>'
         });
     </script>
     </p>
 <% end %>
-
+<% else %>
+<p>No hay participantes disponibles.</p>
+<% end %>
+<br>
 <%= link_to 'Ingresa tu video y participa!', new_competitor_path(:competition_id => @competition.id),class: "btn btn-default" %>
-

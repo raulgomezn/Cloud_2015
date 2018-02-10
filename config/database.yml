@@ -14,15 +14,16 @@
 #   database: db/development.sqlite3
 
 development:
-  host: "cloud2015.csxrnw9neitk.sa-east-1.rds.amazonaws.com"
-  port: 5432
-  adapter: "postgresql"
-  encoding: "utf8"
-  database: "cloud2015"
-  pool: 5
-  username: "cloud"
-  password: "cloud2015"
-  reconnect: true
+
+#  host: "cloud2015.csxrnw9neitk.sa-east-1.rds.amazonaws.com"
+#  port: 5432
+#  adapter: "postgresql"
+#  encoding: "utf8"
+#  database: "cloud2015"
+#  pool: 5
+#  username: "cloud"
+#  password: "cloud2015"
+#  reconnect: true
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

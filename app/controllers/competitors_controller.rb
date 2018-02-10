@@ -28,14 +28,16 @@ class CompetitorsController < ApplicationController
   # POST /competitors
   # POST /competitors.json
   def create
-    #@competition = Competition.find(params[:competition_id])
     @competitor = Competitor.new(competitor_params)
+    @competitor.video_converted = @competitor.video_original
     @competitor.status_video = 'En Proceso'
-    #@competitor.competitions_id = params[:competition_id]
     @competitor.date_admission = Time.now.getutc
+    @competition = Competition.find(@competitor.competitions_id)
     respond_to do |format|
       if @competitor.save
-        @competition = Competition.find(@competitor.competitions_id)
+        #Inicio Escribir Mensaje en Cola
+        BackgroundController.escribirCola("#{@competitor.id}|#{@competitor.email}|#{@competitor.video_original.path}|#{@competitor.video_original.original_filename()}")
+        #Fin Escribir Mensaje en Cola
         format.html { redirect_to "/" + @competition.url, notice: 'Hemos Recibido Tu Video. Te Enviaremos un Correo Electronico Cuando el Video Este Disponible!' }
         format.json { render :show, status: :created, location: @competitor }
       else
@@ -49,7 +51,7 @@ class CompetitorsController < ApplicationController
   # PATCH/PUT /competitors/1.json
   def update
     respond_to do |format|
-      if @competitor.update(competitor_params)
+      if @competitor.update_attributes(competitor_params)
         format.html { redirect_to @competitor, notice: 'Competitor was successfully updated.' }
         format.json { render :show, status: :ok, location: @competitor }
       else
@@ -79,7 +81,7 @@ class CompetitorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def competitor_params
-    params.require(:competitor).permit(:competitions_id, :first_name, :second_name, :last_name, :second_last_name, :date_admission, :email, :message, :status_video, :video_original, :video_converted)
+    params.require(:competitor).permit(:competitions_id, :first_name, :second_name, :last_name, :second_last_name, :email, :message,  :video_original)
   end
   def permisos
     if(!logged_in?)

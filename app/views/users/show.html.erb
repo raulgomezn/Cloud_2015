@@ -25,11 +25,6 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Administrador:</strong>
-  <%= @user.isadmin %>
-</p>
-
 <%= link_to 'Editar', edit_user_path(@user) %> |
 <%= link_to "Eliminar", @user, method: :delete,
                                   data: { confirm: "¿Esta seguro?" } %>
