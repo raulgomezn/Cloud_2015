@@ -17,7 +17,7 @@ info
 
 # archivos subidos
 /public/system/
-/public/assets/*
+/public/assets/
 
 # Ignore bundler config.
 /.bundle

@@ -7,7 +7,7 @@ class CompetitionsController < ApplicationController
   def index
     user = current_user
     puts "---->ID usario #{user.id}."
-    @competitions = Competition.where(:users_id => user.id)
+    @competitions = Competition.where(:users_id => user.id) #.paginate(:page => params[:page], :per_page => 50)
   end
 
   # GET /competitions/1
@@ -18,6 +18,8 @@ class CompetitionsController < ApplicationController
     puts "---->competition ID #{@competition.id}."
     puts "--->URL:#{request.protocol}#{request.host_with_port}"
     @competitors = Competitor.where(:competitions_id => @competition.id)
+    #Competitor.where("competitions_id = ?",@competition.id).order(:date_admission => :desc)#.paginate(:page => params[:page], :per_page => 50)
+
     @competition.url = "#{request.protocol}#{request.host_with_port}/#{@competition.url}"
     puts "---->competitors #{@competition.url}"
   end
@@ -96,7 +98,7 @@ class CompetitionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def competition_params
-    params.require(:competition).permit(:users_id, :name, :url, :prize, :banner)
+    params.require(:competition).permit(:users_id, :name, :url, :prize, :banner) #:start_date, :end_date,
   end
   
   def permisos

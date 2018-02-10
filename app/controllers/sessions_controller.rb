@@ -11,12 +11,11 @@ class SessionsController < ApplicationController
       puts '-----> LLego el pass de la DB '+ user.id
       mail2 = user.email
       pass2 = user.password
-      if pass2 == pass.to_s && mail2 == mail.to_s
+      if pass2 == pass.to_s && mail2 == mail.to_s #&& user.authenticate(params[:session][:password])
         # Log the user in and redirect to the user's show page.
-        puts '-----> If ' + user.email
+        puts '-----> If'
         log_in user
         @user = user
-        
         redirect_to competitions_url
         #redirect_to user
       else

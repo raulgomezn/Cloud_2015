@@ -22,6 +22,9 @@ Workspace::Application.configure do
   # Raise an error on page load if there are pending migrations.
   #config.active_record.migration_error = :page_load
 
+  config.cache_store = :dalli_store, 'localhost',
+  { :namespace => 'Unicloud', :expires_in => 1.day, :compress => true }
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
@@ -39,6 +42,9 @@ Workspace::Application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
+  config.web_console.whitelisted_ips = '190.69.208.10'
+  config.web_console.whitelisted_ips = '157.253.163.53'
+
   # Paperclip
   Paperclip.options[:command_path] = "/usr/bin/"
   
@@ -67,10 +73,11 @@ Workspace::Application.configure do
   }
 
   AWS.config(
-    access_key_id: ENV['access_key_id'], 
-    secret_access_key: ENV['secret_access_key']
+   access_key_id: ENV['access_key_id'], 
+   secret_access_key: ENV['secret_access_key'], 
+   region: 's3-sa-east-1'
   )
-  if ENV["MEMCACHEDCLOUD_SERVERS"]
-    config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','), { :username => ENV["MEMCACHEDCLOUD_USERNAME"], :password => ENV["MEMCACHEDCLOUD_PASSWORD"] }
-  end
+  #config.action_controller.asset_host = 'd2mmcudnvsg2gc.cloudfront.net'
+  #https://d2mmcudnvsg2gc.cloudfront.net/competitions/banners/2/banner.jpg?1445261885
+
 end

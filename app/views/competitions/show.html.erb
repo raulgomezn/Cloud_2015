@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <!--<%= image_tag @competition.banner.url(:medium) %>-->
   <%= image_tag url_final(@competition.banner.path) %>
 </p>
 
@@ -74,7 +75,7 @@
     <% end %>
   </tbody>
 </table>
-
+<!--< will_paginate @competitors %>-->
 <% else %>
 <p>
   <strong>Sin Datos:</strong>

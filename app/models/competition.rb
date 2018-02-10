@@ -1,5 +1,5 @@
 class Competition
-  include Dynamoid::Document
+  include Dynamoid::Document #< ActiveRecord::Base
   include Dynamoid::Paperclip
   
   has_dynamoid_attached_file :banner,
@@ -12,11 +12,16 @@ class Competition
 
   table :name => :competitions, :key => :id, :read_capacity => 5, :write_capacity => 5
   
+  #field :id, :string
   field :name,  :string
   field :url,  :string
   field :start_date, :datetime
   field :end_date, :datetime
-  field :prize,  :string
+  field :prize,  :string   
+  #field :banner_file_name,  :string
+  #field :banner_content_type,  :string
+  #field :banner_file_size,  :integer
+  #field :banner_updated_at,  :datetime
   field :hash, :serialized
   field :users_id , :string
 
@@ -28,8 +33,12 @@ class Competition
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :prize, length: { maximum: 255}
+
+  #validates :banner, presence: true
   VALID_URL_REGEX = /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9]))*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])\z/
   validates :url, presence: true, length: { minimum: 4, maximum: 15 },
-  format: { with: VALID_URL_REGEX }
+  format: { with: VALID_URL_REGEX }#, uniqueness: true
   
+  
+  #validates_attachment_content_type :banner, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 end

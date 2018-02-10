@@ -22,3 +22,12 @@ Versionamiento del proyecto 1 de la asignatura de Cloud Computing correspodiente
 
 Para que funcione PaperClip 
 sudo apt-get install imagemagick -y
+
+##Memcached
+
+On Ubuntu you can install it by running:
+
+apt-get install memcached
+You can verify your installation using this piece of code:
+
+gem install dalli

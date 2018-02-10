@@ -1,4 +1,5 @@
 <p>
+  <!--<%= image_tag @competition.banner.url(:medium) %>-->
   <%= image_tag url_final(@competition.banner.path) %>
 </p>
 
@@ -12,6 +13,9 @@
 <% @competitors.each do |competitor| %>
     <p>
       Participante: <td><%= competitor.first_name %></td> <td><%= competitor.last_name %></td>
+        <!--PATH <td>< competitor.video_converted.path %></td><br>
+        PATH() <td>< competitor.video_converted.path() %></td><br>
+        URL <td>< competitor.video_converted.url() %></td>-->
 
     <div id="<%= competitor.id %>">Cargando el video...</div>
     <script type="text/javascript">

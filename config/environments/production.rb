@@ -55,7 +55,8 @@ Workspace::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store, 'localhost',
+  { :namespace => 'Unicloud', :expires_in => 1.day, :compress => true }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -104,13 +105,10 @@ Workspace::Application.configure do
         :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
     }
   }
-  
-
   AWS.config(
    access_key_id: ENV['access_key_id'], 
-   secret_access_key: ENV['secret_access_key']
+   secret_access_key: ENV['secret_access_key'], 
+   region: 's3-sa-east-1'
   )
-  if ENV["MEMCACHEDCLOUD_SERVERS"]
-    config.cache_store = :dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(','), { :username => ENV["MEMCACHEDCLOUD_USERNAME"], :password => ENV["MEMCACHEDCLOUD_PASSWORD"] }
-  end
+  #config.action_controller.asset_host = 'd2mmcudnvsg2gc.cloudfront.net'
 end
