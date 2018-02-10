@@ -29,7 +29,7 @@ gem 'aws-sdk', '< 2.0'
 # Otras
 gem 'dynamoid'
 gem 'dynamoid-paperclip'
-#gem 'paperclip', '~> 4.3'
+#gem 'paperclip', '5.2.0'
 gem 'figaro'
 gem 'pg'
 gem 'bcrypt'
