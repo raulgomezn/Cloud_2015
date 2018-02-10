@@ -34,7 +34,6 @@ class BackgroundController < ApplicationController
   end
 
   def self.leerCola
-
     logger.info "Inicio leerCola"
 
     #Leer Cola de Amazon SQS
@@ -48,7 +47,6 @@ class BackgroundController < ApplicationController
       idEnt = arr[0];email = arr[1];keyTMP = arr[2];nArchivo = arr[3]
       keyS3 = keyTMP[1,keyTMP.length]
       puts 'Fin Leer Cola'
-
       #Descargar Video
       nArchivoOrig = idEnt+'_'+nArchivo
       descargarVideo(keyS3,nArchivoOrig)
@@ -76,7 +74,6 @@ class BackgroundController < ApplicationController
       #|Manejo de Excepciones
       #rescue
       # puts 'No Hay Mensajes por Procesar'
-
   end
 
   def self.descargarVideo(keyS3,nArchivo)
@@ -102,6 +99,7 @@ class BackgroundController < ApplicationController
   def self.subirVideo(keyS3,archivo)
     puts 'Inicio Subir Video'
     s3 = AWS::S3.new(region: 'us-east-1')
+
     bucket = s3.buckets['unicloudstorage']
     obj = bucket.objects[keyS3]
     obj.write(File.open(archivo, 'rb'),:acl => :public_read)

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Código de la competición:</strong>
+  <strong>Código del competidor:</strong>
   <%= @competitor.id %>
 </p>
 
@@ -32,15 +32,15 @@
 
 <strong>Video Original:</strong>
 </p>
-<div id="myElement">Loading the player...</div>
+<div id="1-<%=@competitor.id%>">Cargando...</div>
 <script type="text/javascript">
-    var playerInstance = jwplayer("myElement");
+    var playerInstance = jwplayer("1-<%=@competitor.id%>");
     playerInstance.setup({
-        file: "<%= @competitor.video_original.url() %>",
+        file: "<%= url_final(@competitor.video_original.path) %>",
         width: 640,
         height: 360,
-        title: 'Basic Video Embed',
-        description: 'A video with a basic title and description!'
+        title: '<%= @competitor.first_name %>',
+        description: '<%= @competitor.message %>'
     });
 </script>
 
@@ -50,16 +50,16 @@
   <strong>El video esta siendo procesado!.</strong>
 
 <% else %>
-  <strong>Video:</strong></p>
-    <div id="myElement1">Loading the player...</div>
+  <strong>Video Convertido:</strong></p>
+    <div id="<%=@competitor.id%>">Cargando...</div>
     <script type="text/javascript">
-        var playerInstance = jwplayer("myElement1");
+        var playerInstance = jwplayer("<%=@competitor.id%>");
         playerInstance.setup({
-            file: "<%= @competitor.video_converted.url() %>",
+            file: "<%= url_final(@competitor.video_converted.path) %>",
             width: 640,
             height: 360,
-            title: 'Basic Video Embed',
-            description: 'A video with a basic title and description!'
+            title: '<%=@competitor.first_name %>',
+            description: '<%=@competitor.message %>'
         });
     </script>
 </p>

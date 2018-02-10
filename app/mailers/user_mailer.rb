@@ -11,4 +11,8 @@ class UserMailer < ApplicationMailer
         @url  = 'http://unicloud.com/login'
         mail(to: @user.email, subject: t('update_info'))
     end
+    # Envio de Email cuando se actualiza el video a convertido
+    def video_email(email)
+        mail(to: email, subject: 'Video Convertido satisfactoriamente')
+    end
 end

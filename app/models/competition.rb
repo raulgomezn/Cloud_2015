@@ -30,10 +30,10 @@ class Competition
   belongs_to :user
   has_many :competitors
   validates :name, length: { maximum: 100}, presence: true
-  #validates :url, length: { maximum: 100}, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :prize, length: { maximum: 255}
+
   #validates :banner, presence: true
   VALID_URL_REGEX = /(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9]))*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])\z/
   validates :url, presence: true, length: { minimum: 4, maximum: 15 },

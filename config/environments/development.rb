@@ -1,4 +1,4 @@
-Rails.application.configure do
+Workspace::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -21,9 +21,10 @@ Rails.application.configure do
 
   # Raise an error on page load if there are pending migrations.
   #config.active_record.migration_error = :page_load
+
   config.cache_store = :dalli_store, 'localhost',
   { :namespace => 'Unicloud', :expires_in => 1.day, :compress => true }
-  
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
@@ -43,34 +44,22 @@ Rails.application.configure do
   
   config.web_console.whitelisted_ips = '190.69.208.10'
   config.web_console.whitelisted_ips = '157.253.163.53'
-  
+
   # Paperclip
   Paperclip.options[:command_path] = "/usr/bin/"
   
-  # Email SES AWS
-  config.action_mailer.delivery_method = :ses
-  # Email gmail
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  # address: 'email-smtp.us-east-1.amazonaws.com',
-  # domain: 'amazonaws.com',
-  # port: 587,
-  # user_name: '',
-  # password: '',
-  # authentication: 'login',
-  # enable_starttls_auto: true
-  # }
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  # address:              'smtp.gmail.com',
-  # port:                 587,
-  # domain:               'gmail.com',
-  # user_name:            ENV['gmail_username'],
-  # password:             ENV['gmail_password'],
-  # authentication:       'plain',
-  # enable_starttls_auto: true  }
+  # Email
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true }
   
   # Paperclip (for Amazon) 
   config.paperclip_defaults = {
@@ -82,6 +71,7 @@ Rails.application.configure do
         :s3_credentials => {:bucket => ENV['bucket'], :access_key_id => ENV['access_key_id'], :secret_access_key => ENV['secret_access_key']}
     }
   }
+
   AWS.config(
    access_key_id: ENV['access_key_id'], 
    secret_access_key: ENV['secret_access_key'], 
@@ -89,4 +79,5 @@ Rails.application.configure do
   )
   #config.action_controller.asset_host = 'd2mmcudnvsg2gc.cloudfront.net'
   #https://d2mmcudnvsg2gc.cloudfront.net/competitions/banners/2/banner.jpg?1445261885
+
 end

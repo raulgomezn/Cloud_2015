@@ -49,4 +49,33 @@ class Competitor
   #validates_attachment_content_type :video_original, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
   #validates_attachment_content_type :video_converted, content_type: ["video/mp4", "video.mov", "video/mpeg", "video/mpeg4","video/avi","video/x-msvideo"]
   
+  table :name => :competitors, :key => :id, :read_capacity => 5, :write_capacity => 5
+
+  field :id, :string
+  field :first_name,  :string
+  field :second_name,  :string
+  field :last_name,  :string
+  field :second_last_name,  :string
+  field :date_admission,  :datetime
+  field :email,  :string
+  field :message,  :string
+  field :status_video,  :string
+  field :competitions_id,  :string
+  field :hash, :serialized
+  
+  field :video_converted_file_name,  :string
+  
+  #index :email
+    
+  belongs_to :competition, dependent: :destroy
+  
+  validates :first_name, length: { maximum: 50}, presence: true
+  validates :second_name, length: { maximum: 50}
+  validates :last_name, length: { maximum: 50}, presence: true
+  validates :second_last_name, length: { maximum: 50}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, length: { minimum: 5, maximum: 100}, format: { with: VALID_EMAIL_REGEX }, presence: true
+  validates :message, length: { maximum: 255}, presence: true
+  validates :status_video, length: { maximum: 50}
+  
 end
