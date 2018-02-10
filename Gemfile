@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 ruby "2.2.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.3'
-
 # Monitoreo
 gem 'newrelic_rpm'
-
+gem 'rails', '4.2.7.1'
+# Use sqlite3 as the database for Active Record
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails'#,   '~> 3.2.3'
 gem 'coffee-rails'#, '~> 3.2.1'
