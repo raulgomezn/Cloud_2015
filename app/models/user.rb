@@ -12,7 +12,7 @@ class User
     field :hash, :serialized
     
     #index :email
-    
+
     has_many :competitions, dependent: :destroy
     
     validates :firts_name, length: { maximum: 50}, presence: true
@@ -21,6 +21,7 @@ class User
     validates :second_last_name, length: { maximum: 50}
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: { minimum: 10, maximum: 255 },
+
     format: { with: VALID_EMAIL_REGEX }#, uniqueness: true
     validates :password, length: { maximum: 128, minimum: 6}
     

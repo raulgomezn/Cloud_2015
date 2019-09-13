@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Workspace::Application.routes.draw do
   get 'homecompetitors/index'
 
   get     'sessions/new'
@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'signup'  => 'users#new'
 
-  root 'home#index'
+  root :to => 'home#index'
 
   get ':url'  =>  'homecompetitors#index'
+  
+  get "/hirefire/#{ENV['HIREFIRE_TOKEN']}/info"  => 'hirefire#info'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

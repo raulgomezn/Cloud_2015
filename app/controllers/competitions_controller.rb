@@ -19,6 +19,7 @@ class CompetitionsController < ApplicationController
     puts "--->URL:#{request.protocol}#{request.host_with_port}"
     @competitors = Competitor.where(:competitions_id => @competition.id)
     #Competitor.where("competitions_id = ?",@competition.id).order(:date_admission => :desc)#.paginate(:page => params[:page], :per_page => 50)
+
     @competition.url = "#{request.protocol}#{request.host_with_port}/#{@competition.url}"
     puts "---->competitors #{@competition.url}"
   end
@@ -92,7 +93,6 @@ class CompetitionsController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_competition
-    #@competition = Competition.find_by(url: params[:id])
     @competition = Competition.find(params[:id])
   end
 

@@ -206,7 +206,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (< 2.0)
-  aws-ses (~> 0.6.0)
   bcrypt
   bson_ext
   byebug
